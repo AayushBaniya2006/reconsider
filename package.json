@@ -1,0 +1,13 @@
+{
+  "name": "reconsider",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "packet": "tsx src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
