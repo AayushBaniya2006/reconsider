@@ -118,6 +118,14 @@ ${rows}</table>`;
 
 const all = loadAppeals();
 const date = dateArg ?? todayLocal();
+if (['file', 'forward', 'ack', 'decide'].includes(cmd) && !ref) {
+  console.error(`Usage: npm run appeals -- ${cmd} <id|address-fragment> [YYYY-MM-DD]`);
+  process.exit(1);
+}
+if (dateArg && !/^\d{4}-\d{2}-\d{2}$/.test(dateArg)) {
+  console.error(`Bad date "${dateArg}" — use YYYY-MM-DD.`);
+  process.exit(1);
+}
 switch (cmd) {
   case undefined:
   case 'list':

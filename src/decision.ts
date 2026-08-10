@@ -17,9 +17,9 @@ export function decide(assessments: StandardAssessment[]): Decision {
       text: a.text,
       survivalDelta: a.survivalDelta,
       note:
-        a.survivalDelta != null
+        a.survivalDelta != null && a.survivalDelta > 0
           ? `Eaton Fire DINS: remediating raises comparable survival by ~${a.survivalDelta} pp ('Unknown' excluded).`
-          : 'No DINS survival delta computable for this standard.',
+          : 'No positive DINS survival delta computable for this standard.',
     }))
     .sort((a, b) => (b.survivalDelta ?? -1) - (a.survivalDelta ?? -1));
 

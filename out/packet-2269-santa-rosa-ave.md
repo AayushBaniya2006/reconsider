@@ -2,7 +2,7 @@
 
 **Subject property:** 2269 SANTA ROSA AVE, ALTADENA, CA 91001
 **Date:** 2026-08-10
-**Prepared for filing via producer** (agent/broker forwarding duty, 10 CCR §2644.9(j): "the policyholder or applicant may appeal orally or in writing to the agent or broker … who shall then forward that appeal to the insurer no later than five (5) calendar days after receiving the appeal.")
+**Prepared for the policyholder and producer — not for filing.** Complete the actions below first; when filed, the producer's §2644.9(j) 5-day forwarding duty applies.
 
 ## Decision
 
@@ -129,7 +129,7 @@ Subject property's own CAL FIRE damage-inspection record: damage="No Damage", ro
 
 ## Provenance appendix
 
-- Mireye parcel facts: mode=`fixture` (8 fields via POST /v1/fetch, preset wildfire_underwrite, fetched 2026-08-10T22:20:44.046028+00:00)
+- Mireye parcel facts: mode=`live` (8 fields via POST /v1/fetch, preset wildfire_underwrite, fetched 2026-08-10T23:17:12.881329+00:00)
 - [parcel] fire_hazard_severity_zone_class = "Non-Wildland" — CALFIRE_FHSZ <https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0> (confidence: high) fetched 2026-08-10T22:20:37.817842+00:00 vintage CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases — note: CAL FIRE LRA Fire Hazard Severity Zone at the point (FHSZ code -3); read with fire_hazard_responsibility_area, which decides what the class legally means.
 - [parcel] fire_hazard_responsibility_area = "LRA" — CALFIRE_FHSZ <https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0> (confidence: high) fetched 2026-08-10T22:20:37.817774+00:00 vintage CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases — note: responsibility area from the SRA attribute of the same CAL FIRE LRA polygon that carries the FHSZ class.
 - [parcel] lcms_class = "Barren or Impervious" — USFS_LCMS <https://data.fs.usda.gov/geodata/rastergateway/LCMS/> (confidence: medium) fetched 2026-08-10T22:20:36.906003+00:00 vintage USFS LCMS Land_Cover CONUS v2025-11 (2025 annual), ~120 m block-mode CONUS COG — note: LCMS Land_Cover class sampled from the bootstrapped ~120 m block-mode CONUS COG

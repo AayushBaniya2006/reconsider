@@ -22,7 +22,10 @@ export async function fetchParcelFacts(address: string): Promise<ParcelFacts> {
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ address, preset: 'wildfire_underwrite' }),
     });
-    if (!res.ok) throw new Error(`Mireye /v1/fetch failed: HTTP ${res.status} ${await res.text()}`);
+    if (!res.ok) {
+      const body = await res.text().catch(() => '');
+      throw new Error(`Mireye /v1/fetch failed: HTTP ${res.status} ${body}`);
+    }
     const raw = await res.json();
     const slug = address.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-');
     writeFileSync(join(SPIKE_DIR, `mireye-fetch-${slug}.json`), JSON.stringify(raw, null, 2));

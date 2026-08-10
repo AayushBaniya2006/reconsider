@@ -17,9 +17,14 @@ function localDate(d: Date): string {
 }
 
 function addDays(d: Date, days: number): string {
-  const x = new Date(d);
+  const x = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12); // noon-pin vs DST edges
   x.setDate(x.getDate() + days);
   return localDate(x);
+}
+
+// Markdown-table cell guard: raw values (URLs, vintages, notes) may contain '|'.
+function esc(s: unknown): string {
+  return String(s ?? '').replace(/\|/g, '\\|').replace(/\n/g, ' ');
 }
 
 function statusLabel(s: StandardAssessment['status']): string {
@@ -38,7 +43,9 @@ export function renderPacket(p: PacketInput): string {
     '',
     `**Subject property:** ${p.address}`,
     `**Date:** ${date}`,
-    `**Prepared for filing via producer** (agent/broker forwarding duty, 10 CCR §2644.9(j): "${QUOTE_J}")`,
+    isAppeal
+      ? `**Prepared for filing via producer** (agent/broker forwarding duty, 10 CCR §2644.9(j): "${QUOTE_J}")`
+      : `**Prepared for the policyholder and producer — not for filing.** Complete the actions below first; when filed, the producer's §2644.9(j) 5-day forwarding duty applies.`,
     '',
   );
 
@@ -83,7 +90,7 @@ export function renderPacket(p: PacketInput): string {
     for (const [key, f] of Object.entries(p.facts.fields)) {
       if (f.status && f.status !== 'ok') continue;
       const val = `${typeof f.value === 'number' ? +Number(f.value).toFixed(3) : f.value}${f.unit ? ` ${f.unit}` : ''}`;
-      L.push(`| ${key} | ${val} | ${f.source ?? '—'} | ${f.confidence ?? '—'} | ${f.dataset_vintage ?? '—'} |`);
+      L.push(`| ${esc(key)} | ${esc(val)} | ${esc(f.source ?? '—')} | ${esc(f.confidence ?? '—')} | ${esc(f.dataset_vintage ?? '—')} |`);
     }
     L.push('');
     if (p.facts.geocode?.accuracy_type) {
@@ -146,7 +153,7 @@ export function renderPacket(p: PacketInput): string {
     );
     p.decision.gaps.forEach((g, i) => {
       L.push(
-        `| ${i + 1} | ${g.text} (${g.standardId}) | ${g.survivalDelta != null ? `+${g.survivalDelta} pp` : '—'} | Dollar premium reduction for completing this measure, itemized in the §2644.9(i) written reconsideration |`,
+        `| ${i + 1} | ${esc(g.text)} (${g.standardId}) | ${g.survivalDelta != null && g.survivalDelta > 0 ? `+${g.survivalDelta} pp` : '—'} | Dollar premium reduction for completing this measure, itemized in the §2644.9(i) written reconsideration |`,
       );
     });
     L.push('');
@@ -169,7 +176,7 @@ export function renderPacket(p: PacketInput): string {
     L.push(`**Survival by ${x.field}** (No Damage vs Destroyed (>50%)):`, '');
     L.push('| Category | No Damage | Destroyed | Survival |', '|---|---|---|---|');
     for (const r of x.rows) {
-      L.push(`| ${r.category} | ${r.noDamage} | ${r.destroyed} | ${(r.survivalRate * 100).toFixed(0)}% |`);
+      L.push(`| ${esc(r.category)} | ${r.noDamage} | ${r.destroyed} | ${(r.survivalRate * 100).toFixed(0)}% |`);
     }
     L.push(
       `| _Unknown (excluded)_ | ${x.excludedUnknown.noDamage} | ${x.excludedUnknown.destroyed} | — |`,

@@ -85,7 +85,7 @@ function clock(
   satisfiedAt: string | undefined,
   today: string,
 ): ClockItem {
-  if (!startAt) return { label, citation, satisfiedAt, state: 'not-started' };
+  if (!startAt) return { label, citation, state: 'not-started' };
   const dueAt = addDaysIso(startAt, windowDays);
   if (satisfiedAt) {
     return { label, citation, dueAt, satisfiedAt, state: diffDays(dueAt, satisfiedAt) >= 0 ? 'met' : 'met-late' };

@@ -26,9 +26,11 @@ function isUnknown(v: unknown): boolean {
 // survival effects when pooled with homes. Disclosed in the packet.
 const SFR_FILTER = `STRUCTURETYPE LIKE 'Single Family Residence%'`;
 
+const q = (s: string) => s.replace(/'/g, "''");
+
 export async function damageCrosstab(incident: string, field: string): Promise<Crosstab> {
   const json = await query({
-    where: `INCIDENTNAME='${incident}' AND ${SFR_FILTER} AND DAMAGE IN ('No Damage','Destroyed (>50%)')`,
+    where: `INCIDENTNAME='${q(incident)}' AND ${SFR_FILTER} AND DAMAGE IN ('No Damage','Destroyed (>50%)')`,
     groupByFieldsForStatistics: `${field},DAMAGE`,
     outStatistics: JSON.stringify([
       { statisticType: 'count', onStatisticField: 'OBJECTID', outStatisticFieldName: 'n' },
@@ -39,6 +41,7 @@ export async function damageCrosstab(incident: string, field: string): Promise<C
   for (const f of json.features) {
     const a = f.attributes;
     const cat = a[field];
+    if (a.DAMAGE !== 'No Damage' && a.DAMAGE !== 'Destroyed (>50%)') continue; // where-clause should prevent this
     const bucket = a.DAMAGE === 'No Damage' ? 'noDamage' : 'destroyed';
     if (isUnknown(cat)) {
       excludedUnknown[bucket as 'noDamage' | 'destroyed'] += a.n;
@@ -66,9 +69,9 @@ const RECORD_FIELDS =
 // prefix (e.g. "2269 SANTA ROSA AVE"). Multiple rows per address happen
 // (accessory structures) — caller picks the primary.
 export async function findSubjectRecords(incident: string, address: string): Promise<DinsRecord[]> {
-  const prefix = address.split(',')[0].trim().toUpperCase().replace(/'/g, "''");
+  const prefix = q(address.split(',')[0].trim().toUpperCase());
   const json = await query({
-    where: `INCIDENTNAME='${incident}' AND SITEADDRESS LIKE '${prefix}%'`,
+    where: `INCIDENTNAME='${q(incident)}' AND SITEADDRESS LIKE '${prefix}%'`,
     outFields: RECORD_FIELDS,
     outSR: '4326',
     resultRecordCount: '20',
@@ -89,7 +92,7 @@ export function pickPrimaryRecord(records: DinsRecord[]): DinsRecord | undefined
 
 export async function streetRecords(incident: string, streetName: string): Promise<DinsRecord[]> {
   const json = await query({
-    where: `INCIDENTNAME='${incident}' AND STREETNAME='${streetName.replace(/'/g, "''")}'`,
+    where: `INCIDENTNAME='${q(incident)}' AND STREETNAME='${q(streetName)}'`,
     outFields: RECORD_FIELDS,
     outSR: '4326',
     resultRecordCount: '400',
