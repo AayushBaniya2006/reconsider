@@ -7,6 +7,8 @@ import { damageCrosstab, findSubjectRecords, pickPrimaryRecord } from './dins.ts
 import { assessStandards } from './scoring.ts';
 import { decide } from './decision.ts';
 import { renderPacket } from './packet.ts';
+import { htmlToPdf, toHtml } from './render.ts';
+import { upsertAppeal } from './registry.ts';
 import type { Crosstab } from './types.ts';
 
 const address = process.argv[2] ?? '2269 SANTA ROSA AVE, ALTADENA, CA 91001';
@@ -35,7 +37,7 @@ console.error('[4/5] Decision');
 const decision = decide(assessments);
 console.error(`      ${decision.action.toUpperCase()} — ${decision.rationale}`);
 
-console.error('[5/5] Rendering packet');
+console.error('[5/5] Rendering packet (md + html + pdf) and registering appeal');
 const markdown = renderPacket({
   address,
   facts,
@@ -49,5 +51,22 @@ const slug = address.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-');
 mkdirSync(new URL('../out', import.meta.url).pathname, { recursive: true });
 const outPath = new URL(`../out/packet-${slug}.md`, import.meta.url).pathname;
 writeFileSync(outPath, markdown);
-console.error(`      wrote ${outPath}`);
+
+const html = toHtml(markdown, `Reconsider — ${address}`);
+writeFileSync(outPath.replace(/\.md$/, '.html'), html);
+try {
+  await htmlToPdf(html, outPath.replace(/\.md$/, '.pdf'));
+  console.error(`      wrote ${outPath} (+ .html, .pdf)`);
+} catch (err) {
+  console.error(`      wrote ${outPath} (+ .html; PDF skipped: ${(err as Error).message})`);
+}
+
+const appeal = upsertAppeal({
+  id: slug,
+  address,
+  decision: decision.action,
+  packetPath: outPath.replace(/\.md$/, '.pdf'),
+  createdAt: new Date().toLocaleDateString('en-CA'),
+});
+console.error(`      appeal tracked: ${appeal.id} (status: ${appeal.status}) — npm run appeals`);
 console.log(outPath);

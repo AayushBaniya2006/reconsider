@@ -58,6 +58,14 @@ Demo street candidates (survived/destroyed, balanced): **Santa Rosa 70/77**, **E
 - 🔑 **FHSZ anchor:** both demo parcels are **"Non-Wildland" (LRA)** per CAL FIRE OSFM map dated 2025-03-24 — cited to CAL FIRE's own ArcGIS. Packet leads exposure section with a neutral "reconcile your score with the State's classification" demand (decisive when favorable, harmless otherwise).
 - **Field request FILED** via MCP: `fr_43cf7d4595af48c38390a83589b22c80` (FRAP perimeter distance + last burn year + incident name; all `accepted_new`, queue pos 7, ETA ~Aug 11 15:20 PT). Poll `mireye_field_request_status`; resume /v1/fetch body provided. If built in time → wire into exposure section; demo beat: "the agent requested a field that didn't exist."
 
+## Day 3 build (2026-08-10 evening) — Aug 11–12 scope pulled forward, DONE
+- **Clock tracker**: `data/appeals.json` registry; every packet run auto-registers (status draft). `npm run appeals` = producer view w/ live statutory clocks; lifecycle: `file` (→ producer, (j) 5-day) → `forward` (insurer receipt, (i) 10/30-day) → `ack` → `decide`. Overdue detection verified (backdated test showed "🔴 OVERDUE — statutory deadline missed"). `npm run appeals -- html` → `out/appeals.html` dashboard.
+- **PDF**: packet renders md → styled HTML (marked) → PDF via puppeteer-core + installed Chrome (no download). ~285 KB/packet. Layout visually verified.
+- **(k)(B) demand table**: per unmet measure — verbatim standard, DINS survival delta, demanded itemized dollar disclosure. Zero-gap appeals demand full rating-plan schedule instead.
+- **`MIREYE_OFFLINE=1`**: re-renders replay per-address fixture from spike/ — no credit spend. Live remains default.
+- Founder email P.S. updated to past-tense postmortem (outage bounds ~Aug 8 17:10 → Aug 10 15:10 PT). Field request still queued (pos 7, ETA Aug 11 ~15:20 PT) — poll `mireye_field_request_status fr_43cf7d4595af48c38390a83589b22c80`.
+- Remaining: Aug 13 third property (outside Eaton footprint — tests no-DINS-record path) + threshold tuning; Aug 14 demo + submit (check submission form requirements a day early).
+
 ## Ideation findings (2026-08-10, bounded lane — from REAL shapes)
 - **Demo choreography (3 min):** (1) cold open: "this house survived Eaton; its insurer scored it high-risk anyway" ~15s → (2) live run on 2485: pull logs, 8 cited fields, decision APPEAL ~40s → (3) packet scroll: FHSZ Non-Wildland vs score, statutory clock table, verbatim (k)(B) dollar demand ~60s → (4) run 2269 → REMEDIATE-FIRST ranked gaps ("the agent declines — that's deciding") ~30s → (5) clock-tracker screen + broker close: "producer forwards in 5 days; we track the insurer's 10" ~30s.
 - **Packet:** per-fact table (value/source/confidence/vintage) + rooftop-geocode line + notes in provenance appendix — already built. Confidence is a string enum; render as-is.

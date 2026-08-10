@@ -13,7 +13,9 @@ const API_BASE = 'https://api.mireye.com';
 const SPIKE_DIR = new URL('../spike', import.meta.url).pathname;
 
 export async function fetchParcelFacts(address: string): Promise<ParcelFacts> {
-  const token = process.env.MIREYE_API_TOKEN;
+  // MIREYE_OFFLINE=1 forces fixture replay even with a token — dev re-renders
+  // shouldn't spend credits (1/field/pull).
+  const token = process.env.MIREYE_OFFLINE === '1' ? undefined : process.env.MIREYE_API_TOKEN;
   if (token) {
     const res = await fetch(`${API_BASE}/v1/fetch`, {
       method: 'POST',
@@ -27,13 +29,25 @@ export async function fetchParcelFacts(address: string): Promise<ParcelFacts> {
     return parcelFactsFromRaw(address, 'live', raw);
   }
 
-  const fixture = newestFixture();
+  const fixture = fixtureFor(address);
   if (fixture) {
     const raw = JSON.parse(readFileSync(fixture, 'utf8'));
     return parcelFactsFromRaw(address, 'fixture', raw);
   }
 
   return { address, mode: 'pending', fields: {} };
+}
+
+// Prefer the fixture archived for THIS address; fall back to the newest one.
+function fixtureFor(address: string): string | null {
+  const slug = address.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-');
+  const exact = join(SPIKE_DIR, `mireye-fetch-${slug}.json`);
+  try {
+    readFileSync(exact);
+    return exact;
+  } catch {
+    return newestFixture();
+  }
 }
 
 function parcelFactsFromRaw(address: string, mode: 'live' | 'fixture', raw: any): ParcelFacts {

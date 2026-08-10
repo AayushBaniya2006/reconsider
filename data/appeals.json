@@ -1,0 +1,20 @@
+[
+  {
+    "id": "2485-santa-rosa-ave",
+    "address": "2485 SANTA ROSA AVE, ALTADENA, CA 91001",
+    "decision": "appeal",
+    "packetPath": "/Volumes/CS_Stuff/reconsider/out/packet-2485-santa-rosa-ave.pdf",
+    "createdAt": "2026-08-10",
+    "status": "forwarded",
+    "filedAt": "2026-08-10",
+    "forwardedAt": "2026-08-10"
+  },
+  {
+    "id": "2269-santa-rosa-ave",
+    "address": "2269 SANTA ROSA AVE, ALTADENA, CA 91001",
+    "decision": "remediate-first",
+    "packetPath": "/Volumes/CS_Stuff/reconsider/out/packet-2269-santa-rosa-ave.pdf",
+    "createdAt": "2026-08-10",
+    "status": "draft"
+  }
+]

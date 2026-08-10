@@ -60,16 +60,15 @@ The argument of this packet is the enumerated Safer-from-Wildfires standards the
 | B2d (10 CCR §2644.9(d)(1)(B)2.) | Multipane windows, including dual pane windows, or functional shutters | NOT MET | CAL FIRE inspector recorded window panes: Single Pane. |
 | B2e (10 CCR §2644.9(d)(1)(B)2.) | At least six (6) inches of noncombustible vertical clearance at the bottom | unknown | No evidence available yet. |
 
-## Unmet standards → §2644.9(k)(B) demand
-
-1. **B2d** — Multipane windows, including dual pane windows, or functional shutters
-   - Eaton Fire DINS: remediating raises comparable survival by ~15 pp ('Unknown' excluded).
-
 ## Demand under §2644.9(k)(B)
 
-For each mitigation measure identified above, we demand the disclosure the regulation requires, verbatim:
+We demand, for each mitigation measure below, the disclosure the regulation requires, verbatim:
 
 > The amount of premium reduction the policyholder or applicant would realize as a result of performing each such measure under the insurer’s rating plan that is in effect at the time.
+
+| # | Mitigation measure (enumerated standard) | Eaton survival delta (SFR, Unknown excluded) | Disclosure demanded |
+|---|---|---|---|
+| 1 | Multipane windows, including dual pane windows, or functional shutters (B2d) | +15 pp | Dollar premium reduction for completing this measure, itemized in the §2644.9(i) written reconsideration |
 
 ## Corroboration: CAL FIRE DINS survivor comparables (Eaton Fire)
 
@@ -134,7 +133,7 @@ Subject property's own CAL FIRE damage-inspection record: damage="No Damage", ro
 
 ## Provenance appendix
 
-- Mireye parcel facts: mode=`live` (8 fields via POST /v1/fetch, preset wildfire_underwrite, fetched 2026-08-10T22:20:34.858191+00:00)
+- Mireye parcel facts: mode=`fixture` (8 fields via POST /v1/fetch, preset wildfire_underwrite, fetched 2026-08-10T22:20:34.858191+00:00)
 - [parcel] fire_hazard_severity_zone_class = "Non-Wildland" — CALFIRE_FHSZ <https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0> (confidence: high) fetched 2026-08-10T22:18:35.207499+00:00 vintage CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases — note: CAL FIRE LRA Fire Hazard Severity Zone at the point (FHSZ code -3); read with fire_hazard_responsibility_area, which decides what the class legally means.
 - [parcel] fire_hazard_responsibility_area = "LRA" — CALFIRE_FHSZ <https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0> (confidence: high) fetched 2026-08-10T22:18:35.207376+00:00 vintage CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases — note: responsibility area from the SRA attribute of the same CAL FIRE LRA polygon that carries the FHSZ class.
 - [parcel] lcms_class = "Trees" — USFS_LCMS <https://data.fs.usda.gov/geodata/rastergateway/LCMS/> (confidence: medium) fetched 2026-08-10T22:18:34.130650+00:00 vintage USFS LCMS Land_Cover CONUS v2025-11 (2025 annual), ~120 m block-mode CONUS COG — note: LCMS Land_Cover class sampled from the bootstrapped ~120 m block-mode CONUS COG

@@ -3,11 +3,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "packet": "tsx src/index.ts"
+    "packet": "tsx src/index.ts",
+    "appeals": "tsx src/appeals.ts"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
     "tsx": "^4.19.0",
     "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "marked": "^18.0.9",
+    "puppeteer-core": "^25.5.0"
   }
 }

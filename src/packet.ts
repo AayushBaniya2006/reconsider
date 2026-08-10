@@ -111,13 +111,8 @@ export function renderPacket(p: PacketInput): string {
   L.push('');
 
   // ---- Gaps / demands ----
-  if (p.decision.gaps.length) {
-    L.push(
-      isAppeal
-        ? '## Unmet standards → §2644.9(k)(B) demand'
-        : '## Ranked remediation list (close these, then appeal)',
-      '',
-    );
+  if (!isAppeal && p.decision.gaps.length) {
+    L.push('## Ranked remediation list (close these, then appeal)', '');
     p.decision.gaps.forEach((g, i) => {
       L.push(`${i + 1}. **${g.standardId}** — ${g.text}`, `   - ${g.note}`);
     });
@@ -126,11 +121,28 @@ export function renderPacket(p: PacketInput): string {
   L.push(
     '## Demand under §2644.9(k)(B)',
     '',
-    `For each mitigation measure identified above, ${isAppeal ? 'we demand' : 'the eventual appeal will demand'} the disclosure the regulation requires, verbatim:`,
+    `${isAppeal ? 'We demand' : 'The eventual appeal will demand'}, for each mitigation measure below, the disclosure the regulation requires, verbatim:`,
     '',
     `> ${QUOTE_KB}`,
     '',
   );
+  if (p.decision.gaps.length) {
+    L.push(
+      '| # | Mitigation measure (enumerated standard) | Eaton survival delta (SFR, Unknown excluded) | Disclosure demanded |',
+      '|---|---|---|---|',
+    );
+    p.decision.gaps.forEach((g, i) => {
+      L.push(
+        `| ${i + 1} | ${g.text} (${g.standardId}) | ${g.survivalDelta != null ? `+${g.survivalDelta} pp` : '—'} | Dollar premium reduction for completing this measure, itemized in the §2644.9(i) written reconsideration |`,
+      );
+    });
+    L.push('');
+  } else {
+    L.push(
+      'No enumerated standard is documented as unmet. We demand the itemized premium-reduction schedule for every mitigation measure recognized in the rating plan in effect, so remaining unknowns can be converted to documented credits.',
+      '',
+    );
+  }
 
   // ---- DINS corroboration ----
   L.push('## Corroboration: CAL FIRE DINS survivor comparables (Eaton Fire)', '');
