@@ -1,0 +1,15 @@
+[
+  {
+    "request_id": "fr_43cf7d4595af48c38390a83589b22c80",
+    "filed_at": "2026-08-10",
+    "via": "mireye_request_field (MCP; status visible only to the filing credential)",
+    "asks": [
+      "nearest_fire_perimeter_distance_m (CAL FIRE FRAP)",
+      "most_recent_burn_year",
+      "incident_name"
+    ],
+    "disposition": "accepted_new",
+    "estimated_ready_at": "2026-08-11T22:21:20Z",
+    "purpose": "FRAP burn-history anchor fact for the exposure section: 'no recorded burn within X m since year Y'"
+  }
+]

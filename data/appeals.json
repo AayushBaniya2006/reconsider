@@ -16,5 +16,13 @@
     "packetPath": "/Volumes/CS_Stuff/reconsider/out/packet-2269-santa-rosa-ave.pdf",
     "createdAt": "2026-08-10",
     "status": "draft"
+  },
+  {
+    "id": "4844-commonwealth-ave",
+    "address": "4844 Commonwealth Ave, La Canada Flintridge, CA 91011",
+    "decision": "remediate-first",
+    "packetPath": "/Volumes/CS_Stuff/reconsider/out/packet-4844-commonwealth-ave.pdf",
+    "createdAt": "2026-08-10",
+    "status": "draft"
   }
 ]

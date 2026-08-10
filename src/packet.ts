@@ -92,6 +92,12 @@ export function renderPacket(p: PacketInput): string {
         '',
       );
     }
+    for (const fr of p.pendingFieldRequests ?? []) {
+      L.push(
+        `**Evidence in flight:** this agent has requested additional fields from the data provider — ${fr.asks.join('; ')} (request \`${fr.request_id}\`, filed ${fr.filed_at}${fr.estimated_ready_at ? `, provider ETA ${fr.estimated_ready_at.slice(0, 10)}` : ''}). This packet will be supplemented when the fields are delivered.`,
+        '',
+      );
+    }
   }
 
   // ---- The argument: enumerated standards ----
@@ -114,6 +120,13 @@ export function renderPacket(p: PacketInput): string {
   if (!isAppeal && p.decision.gaps.length) {
     L.push('## Ranked remediation list (close these, then appeal)', '');
     p.decision.gaps.forEach((g, i) => {
+      L.push(`${i + 1}. **${g.standardId}** — ${g.text}`, `   - ${g.note}`);
+    });
+    L.push('');
+  }
+  if (!isAppeal && p.decision.evidenceChecklist?.length) {
+    L.push('## Evidence checklist — document these, then decide', '');
+    p.decision.evidenceChecklist.forEach((g, i) => {
       L.push(`${i + 1}. **${g.standardId}** — ${g.text}`, `   - ${g.note}`);
     });
     L.push('');
@@ -189,6 +202,10 @@ export function renderPacket(p: PacketInput): string {
   L.push(
     `- Regulation text: 10 CCR §2644.9 via Cornell LII <https://www.law.cornell.edu/regulations/california/10-CCR-2644.9>, fetched ${date}.`,
     `- DINS: CAL FIRE POSTFIRE_MASTER_DATA_SHARE FeatureServer, queried live ${date}.`,
+    '',
+    '---',
+    '',
+    '*Verification statement: every regulation quotation in this packet was fetched from the primary source on the date shown, not reproduced from memory; every data fact carries its source, source URL, retrieval timestamp, and dataset vintage; every survivor comparison discloses its conditioning. Anything this packet could not verify is marked unknown rather than asserted.*',
     '',
   );
 

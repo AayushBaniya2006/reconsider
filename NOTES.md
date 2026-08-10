@@ -66,6 +66,14 @@ Demo street candidates (survived/destroyed, balanced): **Santa Rosa 70/77**, **E
 - Founder email P.S. updated to past-tense postmortem (outage bounds ~Aug 8 17:10 → Aug 10 15:10 PT). Field request still queued (pos 7, ETA Aug 11 ~15:20 PT) — poll `mireye_field_request_status fr_43cf7d4595af48c38390a83589b22c80`.
 - Remaining: Aug 13 third property (outside Eaton footprint — tests no-DINS-record path) + threshold tuning; Aug 14 demo + submit (check submission form requirements a day early).
 
+## Day 3 late build (2026-08-10 night) — Aug 13 scope pulled forward too
+- **Third property LIVE: 4844 Commonwealth Ave, La Cañada Flintridge** (rooftop parcel-grade geocode vs LA County; 0 DINS rows — 91011 has 2 rows total across ALL incidents). FHSZ **Very High** → decision: **document-first** (new honest branch: met==0 && notMet==0 → refuse to file on exposure alone; packet renders "Evidence checklist — document these, then decide", high-impact standards first). Demo triangle: Non-Wildland+hardening→APPEAL / Non-Wildland+gaps→REMEDIATE / Very High+no evidence→CHECKLIST.
+- **Field request surfaced in product**: `data/field-requests.json` → packet "Evidence in flight" line (request id, filed date, provider ETA). NB: REST GET /v1/field-requests/{id} returns not_found under the API token — requests are visible only to the filing credential (MCP OAuth); poll via MCP tool only.
+- **Verification statement** footer added to every packet (primary-source quotes, per-fact provenance, disclosed conditioning, unknown ≠ asserted).
+- **README.md** (submission front page), **docs/demo-script.md** (beat-by-beat, timed, with fallbacks + Aug 13 rehearsal checklist), **scripts/demo.sh** (one-command full demo; MIREYE_OFFLINE=1 replay verified end-to-end).
+- Build Challenge submission format is NOT on docs.mireye.ai (checked llms.txt index too) — **get it from the original challenge announcement**.
+- Credit spend so far: ~3 live pulls ×8 + geocodes ≈ 30 credits of 5k+.
+
 ## Ideation findings (2026-08-10, bounded lane — from REAL shapes)
 - **Demo choreography (3 min):** (1) cold open: "this house survived Eaton; its insurer scored it high-risk anyway" ~15s → (2) live run on 2485: pull logs, 8 cited fields, decision APPEAL ~40s → (3) packet scroll: FHSZ Non-Wildland vs score, statutory clock table, verbatim (k)(B) dollar demand ~60s → (4) run 2269 → REMEDIATE-FIRST ranked gaps ("the agent declines — that's deciding") ~30s → (5) clock-tracker screen + broker close: "producer forwards in 5 days; we track the insurer's 10" ~30s.
 - **Packet:** per-fact table (value/source/confidence/vintage) + rooftop-geocode line + notes in provenance appendix — already built. Confidence is a string enum; render as-is.

@@ -25,6 +25,31 @@ export function decide(assessments: StandardAssessment[]): Decision {
 
   const highImpactGaps = notMet.filter((a) => HIGH_IMPACT.has(a.id));
 
+  // Nothing documented in either direction (e.g. subject outside the DINS
+  // inspection footprint and no owner evidence yet): filing now would argue
+  // from exposure alone, which the §2644.9(d)(1) framing forbids. Don't
+  // appeal — return the evidence checklist instead.
+  if (met.length === 0 && notMet.length === 0) {
+    const checklist: RankedGap[] = assessments
+      .filter((a) => a.status === 'unknown')
+      .sort((a, b) => Number(HIGH_IMPACT.has(b.id)) - Number(HIGH_IMPACT.has(a.id)))
+      .map((a) => ({
+        standardId: a.id,
+        text: a.text,
+        note: 'No evidence in either direction — document status (photos, receipts, inspection report) before filing.',
+      }));
+    return {
+      action: 'remediate-first',
+      rationale:
+        'No enumerated standard is documented as met or unmet for this property. An appeal must argue from the §2644.9(d)(1) standards, so filing now would rest on exposure facts alone. Document the checklist below first; the decision re-runs when evidence lands.',
+      metCount: 0,
+      notMetCount: 0,
+      unknownCount: unknown.length,
+      gaps: [],
+      evidenceChecklist: checklist,
+    };
+  }
+
   let action: Decision['action'];
   let rationale: string;
   if (highImpactGaps.length >= 2) {

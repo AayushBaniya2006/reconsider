@@ -106,7 +106,15 @@ export interface Decision {
   metCount: number;
   notMetCount: number;
   unknownCount: number;
-  gaps: RankedGap[];
+  gaps: RankedGap[]; // documented NOT-MET standards only (drives the (k)(B) table)
+  evidenceChecklist?: RankedGap[]; // all-unknown case: what to document before filing
+}
+
+export interface PendingFieldRequest {
+  request_id: string;
+  filed_at: string;
+  asks: string[];
+  estimated_ready_at?: string;
 }
 
 export interface PacketInput {
@@ -117,4 +125,5 @@ export interface PacketInput {
   assessments: StandardAssessment[];
   decision: Decision;
   generatedAt: Date;
+  pendingFieldRequests?: PendingFieldRequest[];
 }

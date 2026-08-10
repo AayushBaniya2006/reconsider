@@ -27,6 +27,8 @@ CAL FIRE's official Fire Hazard Severity Zone map (CAL FIRE OSFM LRA FHSZ (recom
 
 Location resolution: rooftop-accuracy geocode (parcel-grade) of "2269 Santa Rosa Ave, Altadena, CA 91001" via geocodio.
 
+**Evidence in flight:** this agent has requested additional fields from the data provider — nearest_fire_perimeter_distance_m (CAL FIRE FRAP); most_recent_burn_year; incident_name (request `fr_43cf7d4595af48c38390a83589b22c80`, filed 2026-08-10, provider ETA 2026-08-11). This packet will be supplemented when the fields are delivered.
+
 ## Assessment against the enumerated mitigation standards (10 CCR §2644.9(d)(1))
 
 The argument of this packet is the enumerated Safer-from-Wildfires standards the regulation requires rating plans to reflect. Survivor comparables (below) corroborate; they are not the argument.
@@ -146,3 +148,7 @@ Subject property's own CAL FIRE damage-inspection record: damage="No Damage", ro
 - [B2d] Corroboration: Eaton Fire survival by WINDOWPANE (No Damage vs Destroyed, 'Unknown' excluded): Multi Pane 74%, Single Pane 59%, No Windows 38% — standard-conforming category: Multi Pane.
 - Regulation text: 10 CCR §2644.9 via Cornell LII <https://www.law.cornell.edu/regulations/california/10-CCR-2644.9>, fetched 2026-08-10.
 - DINS: CAL FIRE POSTFIRE_MASTER_DATA_SHARE FeatureServer, queried live 2026-08-10.
+
+---
+
+*Verification statement: every regulation quotation in this packet was fetched from the primary source on the date shown, not reproduced from memory; every data fact carries its source, source URL, retrieval timestamp, and dataset vintage; every survivor comparison discloses its conditioning. Anything this packet could not verify is marked unknown rather than asserted.*

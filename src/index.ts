@@ -1,7 +1,7 @@
 // Reconsider pipeline: address → Mireye facts → DINS comparables →
 // enumerated-standards scoring → decision → packet markdown.
 // Usage: npm run packet -- "2269 SANTA ROSA AVE, ALTADENA, CA 91001"
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fetchParcelFacts } from './mireye.ts';
 import { damageCrosstab, findSubjectRecords, pickPrimaryRecord } from './dins.ts';
 import { assessStandards } from './scoring.ts';
@@ -38,6 +38,13 @@ const decision = decide(assessments);
 console.error(`      ${decision.action.toUpperCase()} — ${decision.rationale}`);
 
 console.error('[5/5] Rendering packet (md + html + pdf) and registering appeal');
+let pendingFieldRequests = [];
+try {
+  pendingFieldRequests = JSON.parse(
+    readFileSync(new URL('../data/field-requests.json', import.meta.url).pathname, 'utf8'),
+  );
+} catch {}
+
 const markdown = renderPacket({
   address,
   facts,
@@ -46,6 +53,7 @@ const markdown = renderPacket({
   assessments,
   decision,
   generatedAt: new Date(),
+  pendingFieldRequests,
 });
 const slug = address.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-');
 mkdirSync(new URL('../out', import.meta.url).pathname, { recursive: true });
