@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "packet": "tsx src/index.ts",
-    "appeals": "tsx src/appeals.ts"
+    "appeals": "tsx src/appeals.ts",
+    "site": "tsx src/site.ts"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",

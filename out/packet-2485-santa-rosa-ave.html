@@ -45,6 +45,7 @@ strong { letter-spacing: 0.01em; }
 <p>* Computed from packet date; statutory clocks run from the insurer&#39;s actual receipt.</p>
 <h2>Subject parcel exposure — independently cited facts</h2>
 <p>CAL FIRE&#39;s official Fire Hazard Severity Zone map (CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases) classifies the subject parcel as <strong>Non-Wildland</strong> (responsibility area: LRA). The written reconsideration required by §2644.9(i) should reconcile the insurer&#39;s wildfire risk score with the State&#39;s own hazard classification of this parcel.</p>
+<p>Modeled annual wildfire frequency at the parcel: <strong>8.00e-6</strong> (FEMA_NRI, confidence medium).</p>
 <table>
 <thead>
 <tr>
@@ -56,6 +57,13 @@ strong { letter-spacing: 0.01em; }
 </tr>
 </thead>
 <tbody><tr>
+<td>wildfire_annual_frequency</td>
+<td>0</td>
+<td>FEMA_NRI</td>
+<td>medium</td>
+<td>FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data)</td>
+</tr>
+<tr>
 <td>fire_hazard_severity_zone_class</td>
 <td>Non-Wildland</td>
 <td>CALFIRE_FHSZ</td>
@@ -68,6 +76,13 @@ strong { letter-spacing: 0.01em; }
 <td>CALFIRE_FHSZ</td>
 <td>high</td>
 <td>CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases</td>
+</tr>
+<tr>
+<td>slope_degrees</td>
+<td>4.692 degrees</td>
+<td>USGS_3DEP_COG</td>
+<td>medium</td>
+<td>—</td>
 </tr>
 <tr>
 <td>lcms_class</td>
@@ -98,18 +113,114 @@ strong { letter-spacing: 0.01em; }
 <td>—</td>
 </tr>
 <tr>
-<td>slope_degrees</td>
-<td>4.692 degrees</td>
-<td>USGS_3DEP_COG</td>
-<td>medium</td>
-<td>—</td>
-</tr>
-<tr>
 <td>elevation</td>
 <td>388.454 meters</td>
 <td>USGS_3DEP_COG</td>
 <td>medium</td>
 <td>3DEP 1/3 arc-second seamless DEM</td>
+</tr>
+</tbody></table>
+<p><strong>Broader hazard context</strong> (natural-hazard screen of the same parcel — 13 additional cited facts; wildfire is the only hazard class at issue in this appeal):</p>
+<table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+<th>Vintage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>seismic_pga_2pct_50yr_g</td>
+<td>0.915 g</td>
+<td>USGS_NSHM</td>
+<td>medium</td>
+<td>USGS 2023 Conterminous U.S. NSHM (uniform-hazard ground motion maps, VS30=760 B/C; DOI 10.5066/P9GNPCOD)</td>
+</tr>
+<tr>
+<td>seismic_design_category</td>
+<td>D</td>
+<td>USGS_DESIGNMAPS_ASCE7</td>
+<td>high</td>
+<td>ASCE 7-22 (USGS provisional)</td>
+</tr>
+<tr>
+<td>design_wind_speed_mph</td>
+<td>103 mph</td>
+<td>NOAA_ASCE_WIND_VECTORS</td>
+<td>medium</td>
+<td>ASCE 7-22 700-yr MRI / Risk Cat II (NOAA CC0 mirror, local gpkg)</td>
+</tr>
+<tr>
+<td>tornado_annual_frequency</td>
+<td>0</td>
+<td>FEMA_NRI</td>
+<td>medium</td>
+<td>FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data)</td>
+</tr>
+<tr>
+<td>hail_annual_frequency</td>
+<td>0.122</td>
+<td>FEMA_NRI</td>
+<td>medium</td>
+<td>FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data)</td>
+</tr>
+<tr>
+<td>lightning_annual_flash_days</td>
+<td>10.397 days</td>
+<td>FEMA_NRI</td>
+<td>medium</td>
+<td>FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data)</td>
+</tr>
+<tr>
+<td>landslide_susceptibility_index</td>
+<td>8</td>
+<td>USGS_LANDSLIDE_SUSCEPTIBILITY</td>
+<td>medium</td>
+<td>USGS Slope-Relief-Threshold landslide susceptibility (n10_susc, 2024)</td>
+</tr>
+<tr>
+<td>nearest_dam_distance_m</td>
+<td>1752.5 m</td>
+<td>USACE_NID</td>
+<td>medium</td>
+<td>USACE National Inventory of Dams (local GeoPackage mirror of the Esri-hosted NID_v1 FeatureServer)</td>
+</tr>
+<tr>
+<td>nearest_dam_hazard_potential</td>
+<td>High</td>
+<td>USACE_NID</td>
+<td>medium</td>
+<td>USACE National Inventory of Dams (local GeoPackage mirror of the Esri-hosted NID_v1 FeatureServer)</td>
+</tr>
+<tr>
+<td>high_hazard_dams_within_10km</td>
+<td>11</td>
+<td>USACE_NID</td>
+<td>medium</td>
+<td>USACE National Inventory of Dams (local GeoPackage mirror of the Esri-hosted NID_v1 FeatureServer)</td>
+</tr>
+<tr>
+<td>in_karst_area</td>
+<td>false</td>
+<td>USGS_KARST</td>
+<td>medium</td>
+<td>USGS National Karst Map OFR 2014-1156 (local GeoPackage reduction, simplified ~90 m)</td>
+</tr>
+<tr>
+<td>soil_shrink_swell_class</td>
+<td>null</td>
+<td>NRCS_gNATSGO</td>
+<td>medium</td>
+<td>—</td>
+</tr>
+<tr>
+<td>within_floodplain_polygon</td>
+<td>false</td>
+<td>FEMA_NFHL</td>
+<td>high</td>
+<td>06037C_STUDY2</td>
 </tr>
 </tbody></table>
 <p>Location resolution: rooftop-accuracy geocode (parcel-grade) of &quot;2485 Santa Rosa Ave, Altadena, CA 91001&quot; via geocodio.</p>
@@ -459,14 +570,30 @@ strong { letter-spacing: 0.01em; }
 <p><strong>Methodology disclosure.</strong> Comparisons are restricted to single-family residences (roughly 30% of Eaton DINS records are utility/miscellaneous structures — sheds, garages — which distort pooled survival rates) and exclude structures whose feature value is &quot;Unknown&quot;. Unknowns concentrate among destroyed structures because inspectors cannot assess features that burned; including them would overstate every survival effect (survivorship artifact). Counts of excluded records are disclosed per table above.</p>
 <h2>Provenance appendix</h2>
 <ul>
-<li>Mireye parcel facts: mode=<code>live</code> (8 fields via POST /v1/fetch, preset wildfire_underwrite, fetched 2026-08-10T23:17:10.697214+00:00)</li>
+<li>Mireye parcel facts: mode=<code>fixture</code> (24 fields via POST /v1/fetch, preset wildfire_underwrite, fetched 2026-08-10T23:52:15.848858+00:00)</li>
+<li>[parcel] seismic_pga_2pct_50yr_g = 0.9150000214576721 g — USGS_NSHM <a href="https://www.sciencebase.gov/catalog/item/644af897d34e45f6ddcd13b3">https://www.sciencebase.gov/catalog/item/644af897d34e45f6ddcd13b3</a> (confidence: medium) fetched 2026-08-10T23:52:16.035069+00:00 vintage USGS 2023 Conterminous U.S. NSHM (uniform-hazard ground motion maps, VS30=760 B/C; DOI 10.5066/P9GNPCOD) — note: PGA (g) with 2% probability of exceedance in 50 yr (~2475-yr return), site class BC (VS30=760); sampled from the bootstrapped USGS 2023 NSHM uniform-hazard CONUS COG</li>
+<li>[parcel] seismic_design_category = &quot;D&quot; — USGS_DESIGNMAPS_ASCE7 <a href="https://earthquake.usgs.gov/ws/designmaps/">https://earthquake.usgs.gov/ws/designmaps/</a> (confidence: high) fetched 2026-08-10T23:52:17.022712+00:00 vintage ASCE 7-22 (USGS provisional) — note: siteClass=D riskCategory=II (assumed defaults; Ss=2.18 S1=0.73 SDS=1.5)</li>
+<li>[parcel] design_wind_speed_mph = 103 mph — NOAA_ASCE_WIND_VECTORS <a href="https://services2.arcgis.com/C8EMgrsFcRFL6LrL/arcgis/rest/services/ASCE_Wind_Vectors/FeatureServer">https://services2.arcgis.com/C8EMgrsFcRFL6LrL/arcgis/rest/services/ASCE_Wind_Vectors/FeatureServer</a> (confidence: medium) fetched 2026-08-10T23:52:16.036574+00:00 vintage ASCE 7-22 700-yr MRI / Risk Cat II (NOAA CC0 mirror, local gpkg) — note: banded 3-second-gust basic design wind speed (mph), Exposure C (point-in-polygon; local gpkg mirror)</li>
+<li>[parcel] wildfire_annual_frequency = 0.000007999999979802 — FEMA_NRI <a href="https://hazards.fema.gov/nri/">https://hazards.fema.gov/nri/</a> (confidence: medium) fetched 2026-08-10T23:52:16.036794+00:00 vintage FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data) — note: annualized frequency for Census tract 06037461100 — events/yr</li>
+<li>[parcel] tornado_annual_frequency = 0.00009719505932414187 — FEMA_NRI <a href="https://hazards.fema.gov/nri/">https://hazards.fema.gov/nri/</a> (confidence: medium) fetched 2026-08-10T23:52:16.036813+00:00 vintage FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data) — note: annualized frequency for Census tract 06037461100 — events/yr</li>
+<li>[parcel] hail_annual_frequency = 0.12207432140477316 — FEMA_NRI <a href="https://hazards.fema.gov/nri/">https://hazards.fema.gov/nri/</a> (confidence: medium) fetched 2026-08-10T23:52:16.036845+00:00 vintage FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data) — note: annualized frequency for Census tract 06037461100 — events/yr</li>
+<li>[parcel] lightning_annual_flash_days = 10.397461000000002 days — FEMA_NRI <a href="https://hazards.fema.gov/nri/">https://hazards.fema.gov/nri/</a> (confidence: medium) fetched 2026-08-10T23:52:16.036855+00:00 vintage FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data) — note: annualized frequency for Census tract 06037461100 — lightning days/yr</li>
+<li>[parcel] landslide_susceptibility_index = 8 — USGS_LANDSLIDE_SUSCEPTIBILITY <a href="https://www.sciencebase.gov/catalog/item/65ccea5bd34ef4b119cb3bac">https://www.sciencebase.gov/catalog/item/65ccea5bd34ef4b119cb3bac</a> (confidence: medium) fetched 2026-08-10T23:52:15.996396+00:00 vintage USGS Slope-Relief-Threshold landslide susceptibility (n10_susc, 2024) — note: sampled from the bootstrapped n10_susc CONUS COG at the point</li>
+<li>[parcel] nearest_dam_distance_m = 1752.5 m — USACE_NID <a href="https://nid.sec.usace.army.mil/">https://nid.sec.usace.army.mil/</a> (confidence: medium) fetched 2026-08-10T23:52:16.035832+00:00 vintage USACE National Inventory of Dams (local GeoPackage mirror of the Esri-hosted NID_v1 FeatureServer) — note: straight-line distance to the nearest inventoried dam — a screening signal, not inundation exposure</li>
+<li>[parcel] nearest_dam_hazard_potential = &quot;High&quot; — USACE_NID <a href="https://nid.sec.usace.army.mil/">https://nid.sec.usace.army.mil/</a> (confidence: medium) fetched 2026-08-10T23:52:16.035722+00:00 vintage USACE National Inventory of Dams (local GeoPackage mirror of the Esri-hosted NID_v1 FeatureServer) — note: USACE consequence-of-failure class of the nearest dam — not a condition or failure-probability rating</li>
+<li>[parcel] high_hazard_dams_within_10km = 11 — USACE_NID <a href="https://nid.sec.usace.army.mil/">https://nid.sec.usace.army.mil/</a> (confidence: medium) fetched 2026-08-10T23:52:16.035857+00:00 vintage USACE National Inventory of Dams (local GeoPackage mirror of the Esri-hosted NID_v1 FeatureServer) — note: count of High hazard-potential NID dams in the 10 km band; a floor — sub-inventory-threshold dams are absent</li>
+<li>[parcel] in_karst_area = false — USGS_KARST <a href="https://doi.org/10.3133/ofr20141156">https://doi.org/10.3133/ofr20141156</a> (confidence: medium) fetched 2026-08-10T23:52:16.036119+00:00 vintage USGS National Karst Map OFR 2014-1156 (local GeoPackage reduction, simplified ~90 m)</li>
+<li>[parcel] karst_type = null — USGS_KARST <a href="https://doi.org/10.3133/ofr20141156">https://doi.org/10.3133/ofr20141156</a> (confidence: medium) fetched 2026-08-10T23:52:16.036200+00:00 vintage USGS National Karst Map OFR 2014-1156 (local GeoPackage reduction, simplified ~90 m) — note: in_karst_area is False (no mapped karst or pseudokarst unit at the point)</li>
+<li>[parcel] karst_exposure_class = null — USGS_KARST <a href="https://doi.org/10.3133/ofr20141156">https://doi.org/10.3133/ofr20141156</a> (confidence: medium) fetched 2026-08-10T23:52:16.036211+00:00 vintage USGS National Karst Map OFR 2014-1156 (local GeoPackage reduction, simplified ~90 m) — note: in_karst_area is False (no mapped karst or pseudokarst unit at the point)</li>
 <li>[parcel] fire_hazard_severity_zone_class = &quot;Non-Wildland&quot; — CALFIRE_FHSZ <a href="https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0">https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0</a> (confidence: high) fetched 2026-08-10T23:17:10.600988+00:00 vintage CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases — note: CAL FIRE LRA Fire Hazard Severity Zone at the point (FHSZ code -3); read with fire_hazard_responsibility_area, which decides what the class legally means.</li>
 <li>[parcel] fire_hazard_responsibility_area = &quot;LRA&quot; — CALFIRE_FHSZ <a href="https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0">https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/FHSALRA25_v1_All/FeatureServer/0</a> (confidence: high) fetched 2026-08-10T23:17:10.600907+00:00 vintage CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases — note: responsibility area from the SRA attribute of the same CAL FIRE LRA polygon that carries the FHSZ class.</li>
+<li>[parcel] soil_shrink_swell_class = null — NRCS_gNATSGO <a href="https://storage.googleapis.com/mireye-earth-data/soils/gnatsgo_mukey_conus_fy2025.tif">https://storage.googleapis.com/mireye-earth-data/soils/gnatsgo_mukey_conus_fy2025.tif</a> (confidence: medium) fetched 2026-08-10T23:52:16.860604+00:00 — note: binned from dominant-component shallowest-horizon lep_r</li>
+<li>[parcel] within_floodplain_polygon = false — FEMA_NFHL <a href="https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28">https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28</a> (confidence: high) fetched 2026-08-10T23:52:15.925092+00:00 vintage 06037C_STUDY2 — note: FEMA NFHL Flood Hazard Zones intersect, but not an SFHA: Zone X; AREA OF MINIMAL FLOOD HAZARD; SFHA_TF=F; FLD_AR_ID=06037C_5417; SOURCE_CIT=06037C_STUDY2.</li>
+<li>[parcel] slope_degrees = 4.691714763641357 degrees — USGS_3DEP_COG <a href="https://www.usgs.gov/3d-elevation-program">https://www.usgs.gov/3d-elevation-program</a> (confidence: medium) fetched 2026-08-10T23:17:10.688044+00:00</li>
 <li>[parcel] lcms_class = &quot;Trees&quot; — USFS_LCMS <a href="https://data.fs.usda.gov/geodata/rastergateway/LCMS/">https://data.fs.usda.gov/geodata/rastergateway/LCMS/</a> (confidence: medium) fetched 2026-08-10T22:18:34.130650+00:00 vintage USFS LCMS Land_Cover CONUS v2025-11 (2025 annual), ~120 m block-mode CONUS COG — note: LCMS Land_Cover class sampled from the bootstrapped ~120 m block-mode CONUS COG</li>
 <li>[parcel] tree_canopy_pct = 24 percent — USFS_NLCD_TCC <a href="https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/">https://data.fs.usda.gov/geodata/rastergateway/treecanopycover/</a> (confidence: high) fetched 2026-08-10T22:18:34.137225+00:00 vintage USFS/MRLC NLCD Tree Canopy Cover 2025 (v2025-6), CONUS COG (~120 m block-mean canopy %) — note: tree canopy cover (%) sampled from the bootstrapped USFS/NLCD CONUS COG</li>
 <li>[parcel] ndvi_current = 0.1298123449087143 — COPERNICUS_S2_SR_HARMONIZED <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED</a> (confidence: high) fetched 2026-08-10T22:18:40.134632+00:00 vintage S2 SR 60d window @ 2026-08-10</li>
 <li>[parcel] ndvi_change_5y = -0.02202633023262024 — COPERNICUS_S2_SR_HARMONIZED <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED</a> (confidence: medium) fetched 2026-08-10T22:18:40.134774+00:00</li>
-<li>[parcel] slope_degrees = 4.691714763641357 degrees — USGS_3DEP_COG <a href="https://www.usgs.gov/3d-elevation-program">https://www.usgs.gov/3d-elevation-program</a> (confidence: medium) fetched 2026-08-10T23:17:10.688044+00:00</li>
 <li>[parcel] elevation = 388.45416259765625 meters — USGS_3DEP_COG <a href="https://www.usgs.gov/3d-elevation-program">https://www.usgs.gov/3d-elevation-program</a> (confidence: medium) fetched 2026-08-10T23:17:10.687484+00:00 vintage 3DEP 1/3 arc-second seamless DEM</li>
 <li>[B2a] ROOFCONSTRUCTION = &quot;Asphalt&quot; — CAL FIRE DINS damage-inspection record for the subject property (POSTFIRE_MASTER_DATA_SHARE, Eaton Fire) <a href="https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/POSTFIRE_MASTER_DATA_SHARE/FeatureServer/0">https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/POSTFIRE_MASTER_DATA_SHARE/FeatureServer/0</a></li>
 <li>[B2a] Corroboration: Eaton Fire survival by ROOFCONSTRUCTION (No Damage vs Destroyed, &#39;Unknown&#39; excluded): Other 80%, Concrete 72%, Tile 63%, Asphalt 46%, Metal 39%, Wood 23%.</li>

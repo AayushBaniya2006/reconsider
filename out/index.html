@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reconsider — wildfire score appeals under 10 CCR §2644.9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f5f1e8; --paper2:#ede7d8; --ink:#191512; --faint:rgba(25,21,18,.55);
+  --rule:rgba(25,21,18,.8); --hair:rgba(25,21,18,.22);
+  --poppy:#c65d1c; --green:#2d6a4d; --amber:#a06012; --slate:#4c5c74; --oxblood:#9e2b25;
+  --serif:'Libre Caslon Text',Georgia,serif; --mono:'IBM Plex Mono',Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--serif);
+  background-image:radial-gradient(rgba(25,21,18,.035) 1px,transparent 1px);background-size:22px 22px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px 80px}
+header{padding:56px 0 0;animation:rise .7s .05s both}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap}
+h1{font-size:clamp(40px,6vw,72px);font-weight:700;letter-spacing:.01em}
+h1 .re{color:var(--poppy)}
+.filing{font:500 12px/1.6 var(--mono);text-transform:uppercase;letter-spacing:.14em;text-align:right;color:var(--faint)}
+.rules{border-top:3px solid var(--rule);border-bottom:1px solid var(--rule);height:7px;margin:14px 0 0;
+  transform-origin:left;animation:draw .8s .2s both}
+.sub{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 0 0;
+  font:500 13px/1.7 var(--mono);letter-spacing:.02em;color:var(--faint)}
+.thesis{margin:64px 0 8px;max-width:900px;animation:rise .7s .25s both}
+.thesis p{font-size:clamp(22px,3vw,32px);line-height:1.35;font-weight:400}
+.thesis strong{font-weight:700;border-bottom:4px solid var(--poppy)}
+.statute{margin:40px 0 56px;padding:20px 26px;border-left:4px solid var(--ink);background:var(--paper2);
+  font-style:italic;max-width:980px;animation:rise .7s .35s both}
+.statute cite{display:block;margin-top:8px;font:500 11px var(--mono);font-style:normal;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--faint)}
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+.case{position:relative;background:var(--paper2);border:1px solid var(--hair);border-top:3px solid var(--ink);
+  padding:22px 24px 24px;animation:rise .7s calc(.45s + var(--i)*.12s) both;display:flex;flex-direction:column;gap:14px}
+.docket{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.16em;color:var(--faint)}
+.case h2{font-size:21px;line-height:1.3;padding-right:120px;min-height:2.6em}
+.stamp{position:absolute;top:44px;right:18px;transform:rotate(6deg);border:3px double currentColor;
+  padding:6px 12px;font:700 13px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.1em;text-align:center;
+  border-radius:3px;opacity:.92;box-shadow:0 0 0 1px rgba(25,21,18,.04) inset}
+.stamp.appeal{color:var(--green)} .stamp.remediate{color:var(--amber)} .stamp.document{color:var(--slate)}
+.headline{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;border-top:1px solid var(--hair);padding-top:12px}
+.headline dt{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
+.headline dd{font:500 15px var(--mono);margin-top:3px}
+.headline dd.hot{color:var(--oxblood)}
+.headline dd small{display:block;font-size:10px;color:var(--faint)}
+.approx{display:block;font-size:10px;color:var(--faint)}
+.standards{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid var(--hair);padding-top:12px}
+.std-label{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
+.punch{display:inline-flex;gap:4px}
+.cell{width:13px;height:13px;border:1.5px solid var(--ink);display:inline-block}
+.cell.met{background:var(--green);border-color:var(--green)}
+.cell.not-met{background:repeating-linear-gradient(45deg,var(--oxblood),var(--oxblood) 2px,transparent 2px,transparent 4px);border-color:var(--oxblood)}
+.cell.unknown{background:transparent;border-color:var(--hair)}
+.tally{font:500 11px var(--mono);color:var(--faint)}
+.rationale{font-style:italic;font-size:14.5px;color:rgba(25,21,18,.85)}
+.clocks{border-top:1px solid var(--hair);padding-top:10px;display:flex;flex-direction:column;gap:6px}
+.clock{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font:400 12px var(--mono)}
+.ck-label{font-weight:500}
+.ck-cite{color:var(--faint);font-size:10.5px}
+.ck{margin-left:auto;font-weight:500}
+.ck.pending{color:var(--amber)} .ck.done{color:var(--green)} .ck.overdue{color:var(--oxblood)} .ck.idle{color:var(--faint)}
+table.facts{width:100%;border-collapse:collapse;font:400 11.5px var(--mono)}
+.facts th{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--faint);
+  text-align:left;border-bottom:1px solid var(--rule);padding:4px 6px 4px 0}
+.facts td{border-bottom:1px solid var(--hair);padding:5px 6px 5px 0;vertical-align:top}
+.facts td.val{font-weight:500}
+a.packet{align-self:flex-start;font:500 13px var(--mono);letter-spacing:.03em;color:var(--ink);
+  text-decoration:none;border-bottom:2px solid var(--poppy);padding-bottom:2px}
+a.packet:hover{color:var(--poppy)}
+.flight{margin:56px 0 0;padding:18px 24px;border:1px dashed var(--rule);display:flex;gap:16px;align-items:baseline;
+  flex-wrap:wrap;font:400 13px var(--mono);animation:rise .7s .9s both}
+.flight .tag{font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--poppy)}
+footer{margin-top:64px;border-top:3px solid var(--rule);padding-top:18px;display:grid;gap:14px;
+  font-size:13.5px;color:var(--faint);animation:rise .7s 1s both}
+footer .verify{font-style:italic;max-width:980px}
+footer .src{font:400 11px var(--mono);letter-spacing:.02em}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (max-width:760px){.case h2{padding-right:0;min-height:0}.stamp{position:static;transform:rotate(-2deg);align-self:flex-start}}
+</style></head><body><div class="wrap">
+<header>
+  <div class="masthead">
+    <h1><span class="re">Re</span>consider</h1>
+    <div class="filing">Wildfire risk-score appeals<br>10 CCR §2644.9(i) · California<br>Producer caseload · 2026-08-10</div>
+  </div>
+  <div class="rules"></div>
+  <div class="sub">
+    <span>Address in → cited, filing-ready appeal packet out</span>
+    <span>Every fact: source · URL · timestamp · confidence · vintage</span>
+    <span>Comparables: CAL FIRE DINS, Eaton Fire (Unknown excluded, SFR only)</span>
+  </div>
+</header>
+
+<section class="thesis"><p>The agent scored three real properties against the twelve enumerated
+mitigation standards — and <strong>declined to file two of the three</strong>.
+An agent that always appeals isn't deciding.</p></section>
+
+<blockquote class="statute">“If the policyholder or applicant appeals the wildfire risk score or other wildfire risk
+classification, the insurer shall acknowledge receipt of the appeal in writing within ten (10) calendar days …
+[and] respond … with a reconsideration and decision within thirty (30) calendar days.”
+<cite>10 CCR §2644.9(i) — fetched from primary source at build time</cite></blockquote>
+
+<section class="cases">
+<article class="case" style="--i:0">
+  <div class="docket">Case 01 · 2026-08-10</div>
+  <h2>2485 SANTA ROSA AVE, ALTADENA</h2>
+  <div class="stamp appeal"><span>Appeal</span></div>
+  <dl class="headline">
+    <div><dt>CAL FIRE FHSZ</dt><dd class="">Non-Wildland<small> LRA</small></dd></div>
+    <div><dt>Modeled wildfire frequency</dt><dd>8.0×10<sup>-6</sup>/yr <span class="approx">≈ 1-in-125,000</span></dd></div>
+    <div><dt>Cited facts</dt><dd>24<small> rooftop geocode</small></dd></div>
+  </dl>
+  <div class="standards">
+    <span class="std-label">§2644.9(d)(1) standards</span>
+    <span class="punch"><span class="cell unknown" title="A1 — Fire Risk Reduction Community listed by the Board of Forestry pursuant to Public Resources Code section 4290.1 [unknown]"></span><span class="cell unknown" title="A2 — Firewise USA Site in Good Standing [unknown]"></span><span class="cell unknown" title="B1a — Clearing of vegetation and debris from under decks [unknown]"></span><span class="cell unknown" title="B1b — Clearing of vegetation, debris, mulch, stored combustible materials, and any and all movable combustible objects, from the area within five (5) feet [unknown]"></span><span class="cell unknown" title="B1c — Incorporation of only noncombustible materials into that portion of any improvements situated within five (5) feet [unknown]"></span><span class="cell unknown" title="B1d — Removal or absence of combustible structures from the area within thirty (30) feet [unknown]"></span><span class="cell unknown" title="B1e — Whether the property complies with Section 4291 of the Public Resources Code, and any applicable local ordinances [unknown]"></span><span class="cell unknown" title="B2a — Class-A Fire Rated Roof [unknown]"></span><span class="cell met" title="B2b — Enclosed Eaves [met]"></span><span class="cell met" title="B2c — Fire-Resistant Vents [met]"></span><span class="cell not-met" title="B2d — Multipane windows, including dual pane windows, or functional shutters [not-met]"></span><span class="cell unknown" title="B2e — At least six (6) inches of noncombustible vertical clearance at the bottom [unknown]"></span></span>
+    <span class="tally">2 met · 1 not met · 9 unknown</span>
+  </div>
+  <p class="rationale">Met standards (2) outweigh documented gaps (1); remaining unknowns (9) are evidence requests, not concessions.</p>
+  <div class="clocks"><div class="clock"><span class="ck-label">Producer forwards to insurer</span><span class="ck-cite">§2644.9(j), 5 calendar days</span><span class="ck done">done 2026-08-10</span></div><div class="clock"><span class="ck-label">Insurer written acknowledgment</span><span class="ck-cite">§2644.9(i), 10 calendar days</span><span class="ck pending">10d left · due 2026-08-20</span></div><div class="clock"><span class="ck-label">Insurer written reconsideration + decision</span><span class="ck-cite">§2644.9(i), 30 calendar days</span><span class="ck pending">30d left · due 2026-09-09</span></div></div>
+  <table class="facts"><thead><tr><th>Fact</th><th>Value</th><th>Source</th><th>Conf.</th></tr></thead><tbody><tr><td>wildfire_annual_frequency</td><td class="val">0</td><td>FEMA_NRI</td><td>medium</td></tr><tr><td>fire_hazard_severity_zone_class</td><td class="val">Non-Wildland</td><td>CALFIRE_FHSZ</td><td>high</td></tr><tr><td>slope_degrees</td><td class="val">4.6917 degrees</td><td>USGS_3DEP_COG</td><td>medium</td></tr><tr><td>tree_canopy_pct</td><td class="val">24 percent</td><td>USFS_NLCD_TCC</td><td>high</td></tr></tbody></table>
+  <a class="packet" href="packet-2485-santa-rosa-ave.pdf">Filing packet (PDF) →</a>
+</article>
+
+<article class="case" style="--i:1">
+  <div class="docket">Case 02 · 2026-08-10</div>
+  <h2>2269 SANTA ROSA AVE, ALTADENA</h2>
+  <div class="stamp remediate"><span>Remediate first</span></div>
+  <dl class="headline">
+    <div><dt>CAL FIRE FHSZ</dt><dd class="">Non-Wildland<small> LRA</small></dd></div>
+    <div><dt>Modeled wildfire frequency</dt><dd>8.0×10<sup>-6</sup>/yr <span class="approx">≈ 1-in-125,000</span></dd></div>
+    <div><dt>Cited facts</dt><dd>24<small> rooftop geocode</small></dd></div>
+  </dl>
+  <div class="standards">
+    <span class="std-label">§2644.9(d)(1) standards</span>
+    <span class="punch"><span class="cell unknown" title="A1 — Fire Risk Reduction Community listed by the Board of Forestry pursuant to Public Resources Code section 4290.1 [unknown]"></span><span class="cell unknown" title="A2 — Firewise USA Site in Good Standing [unknown]"></span><span class="cell unknown" title="B1a — Clearing of vegetation and debris from under decks [unknown]"></span><span class="cell unknown" title="B1b — Clearing of vegetation, debris, mulch, stored combustible materials, and any and all movable combustible objects, from the area within five (5) feet [unknown]"></span><span class="cell unknown" title="B1c — Incorporation of only noncombustible materials into that portion of any improvements situated within five (5) feet [unknown]"></span><span class="cell unknown" title="B1d — Removal or absence of combustible structures from the area within thirty (30) feet [unknown]"></span><span class="cell unknown" title="B1e — Whether the property complies with Section 4291 of the Public Resources Code, and any applicable local ordinances [unknown]"></span><span class="cell unknown" title="B2a — Class-A Fire Rated Roof [unknown]"></span><span class="cell not-met" title="B2b — Enclosed Eaves [not-met]"></span><span class="cell not-met" title="B2c — Fire-Resistant Vents [not-met]"></span><span class="cell met" title="B2d — Multipane windows, including dual pane windows, or functional shutters [met]"></span><span class="cell unknown" title="B2e — At least six (6) inches of noncombustible vertical clearance at the bottom [unknown]"></span></span>
+    <span class="tally">1 met · 2 not met · 9 unknown</span>
+  </div>
+  <p class="rationale">Documented gaps (2) outweigh met standards (1). Filing now invites a reconsideration that re-affirms the score. Close the ranked gaps below, then appeal.</p>
+  <div class="clocks"><div class="clock"><span class="ck-label">Producer forwards to insurer</span><span class="ck-cite">§2644.9(j), 5 calendar days</span><span class="ck idle">not started</span></div><div class="clock"><span class="ck-label">Insurer written acknowledgment</span><span class="ck-cite">§2644.9(i), 10 calendar days</span><span class="ck idle">not started</span></div><div class="clock"><span class="ck-label">Insurer written reconsideration + decision</span><span class="ck-cite">§2644.9(i), 30 calendar days</span><span class="ck idle">not started</span></div></div>
+  <table class="facts"><thead><tr><th>Fact</th><th>Value</th><th>Source</th><th>Conf.</th></tr></thead><tbody><tr><td>wildfire_annual_frequency</td><td class="val">0</td><td>FEMA_NRI</td><td>medium</td></tr><tr><td>fire_hazard_severity_zone_class</td><td class="val">Non-Wildland</td><td>CALFIRE_FHSZ</td><td>high</td></tr><tr><td>slope_degrees</td><td class="val">5.2346 degrees</td><td>USGS_3DEP_COG</td><td>medium</td></tr><tr><td>tree_canopy_pct</td><td class="val">24 percent</td><td>USFS_NLCD_TCC</td><td>high</td></tr></tbody></table>
+  <a class="packet" href="packet-2269-santa-rosa-ave.pdf">Filing packet (PDF) →</a>
+</article>
+
+<article class="case" style="--i:2">
+  <div class="docket">Case 03 · 2026-08-10</div>
+  <h2>4844 Commonwealth Ave, La Canada Flintridge</h2>
+  <div class="stamp document"><span>Document first</span></div>
+  <dl class="headline">
+    <div><dt>CAL FIRE FHSZ</dt><dd class="hot">Very High<small> LRA</small></dd></div>
+    <div><dt>Modeled wildfire frequency</dt><dd>1.9×10<sup>-3</sup>/yr <span class="approx">≈ 1-in-534</span></dd></div>
+    <div><dt>Cited facts</dt><dd>24<small> rooftop geocode</small></dd></div>
+  </dl>
+  <div class="standards">
+    <span class="std-label">§2644.9(d)(1) standards</span>
+    <span class="punch"><span class="cell unknown" title="A1 — Fire Risk Reduction Community listed by the Board of Forestry pursuant to Public Resources Code section 4290.1 [unknown]"></span><span class="cell unknown" title="A2 — Firewise USA Site in Good Standing [unknown]"></span><span class="cell unknown" title="B1a — Clearing of vegetation and debris from under decks [unknown]"></span><span class="cell unknown" title="B1b — Clearing of vegetation, debris, mulch, stored combustible materials, and any and all movable combustible objects, from the area within five (5) feet [unknown]"></span><span class="cell unknown" title="B1c — Incorporation of only noncombustible materials into that portion of any improvements situated within five (5) feet [unknown]"></span><span class="cell unknown" title="B1d — Removal or absence of combustible structures from the area within thirty (30) feet [unknown]"></span><span class="cell unknown" title="B1e — Whether the property complies with Section 4291 of the Public Resources Code, and any applicable local ordinances [unknown]"></span><span class="cell unknown" title="B2a — Class-A Fire Rated Roof [unknown]"></span><span class="cell unknown" title="B2b — Enclosed Eaves [unknown]"></span><span class="cell unknown" title="B2c — Fire-Resistant Vents [unknown]"></span><span class="cell unknown" title="B2d — Multipane windows, including dual pane windows, or functional shutters [unknown]"></span><span class="cell unknown" title="B2e — At least six (6) inches of noncombustible vertical clearance at the bottom [unknown]"></span></span>
+    <span class="tally">0 met · 0 not met · 12 unknown</span>
+  </div>
+  <p class="rationale">No enumerated standard is documented as met or unmet for this property. An appeal must argue from the §2644.9(d)(1) standards, so filing now would rest on exposure facts alone. Document the checklist below first; the decision re-runs when evidence lands.</p>
+  <div class="clocks"><div class="clock"><span class="ck-label">Producer forwards to insurer</span><span class="ck-cite">§2644.9(j), 5 calendar days</span><span class="ck idle">not started</span></div><div class="clock"><span class="ck-label">Insurer written acknowledgment</span><span class="ck-cite">§2644.9(i), 10 calendar days</span><span class="ck idle">not started</span></div><div class="clock"><span class="ck-label">Insurer written reconsideration + decision</span><span class="ck-cite">§2644.9(i), 30 calendar days</span><span class="ck idle">not started</span></div></div>
+  <table class="facts"><thead><tr><th>Fact</th><th>Value</th><th>Source</th><th>Conf.</th></tr></thead><tbody><tr><td>wildfire_annual_frequency</td><td class="val">0.0019</td><td>FEMA_NRI</td><td>medium</td></tr><tr><td>fire_hazard_severity_zone_class</td><td class="val">Very High</td><td>CALFIRE_FHSZ</td><td>high</td></tr><tr><td>slope_degrees</td><td class="val">4.1522 degrees</td><td>USGS_3DEP_COG</td><td>medium</td></tr><tr><td>tree_canopy_pct</td><td class="val">23 percent</td><td>USFS_NLCD_TCC</td><td>high</td></tr></tbody></table>
+  <a class="packet" href="packet-4844-commonwealth-ave.pdf">Filing packet (PDF) →</a>
+</article></section>
+
+<section class="flight"><span class="tag">Evidence in flight</span>
+<span>The agent requested fields Mireye doesn't have yet — nearest_fire_perimeter_distance_m (CAL FIRE FRAP) · most_recent_burn_year · incident_name — via /v1/field-requests
+(<strong>fr_43cf7d4595af48c38390a83589b22c80</strong>, filed 2026-08-10, provider ETA 2026-08-11).
+Packets are supplemented on delivery.</span></section>
+
+<footer>
+  <p class="verify">Verification statement: every regulation quotation fetched from the primary source at build
+  time, never reproduced from memory; every data fact carries its source, URL, retrieval timestamp, and dataset
+  vintage; every survivor comparison discloses its conditioning. Anything unverified is marked unknown rather
+  than asserted.</p>
+  <p class="src">Data: Mireye /v1/fetch (wildfire_underwrite + natural_hazard presets) · CAL FIRE DINS
+  POSTFIRE_MASTER_DATA_SHARE (live) · CAL FIRE OSFM FHSZ 2025 · FEMA NRI · Cornell LII (10 CCR §2644.9)</p>
+</footer>
+</div></body></html>

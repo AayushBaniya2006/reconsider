@@ -1,0 +1,350 @@
+[
+  {
+    "id": "2485-santa-rosa-ave",
+    "address": "2485 SANTA ROSA AVE, ALTADENA, CA 91001",
+    "decision": "appeal",
+    "rationale": "Met standards (2) outweigh documented gaps (1); remaining unknowns (9) are evidence requests, not concessions.",
+    "counts": {
+      "met": 2,
+      "notMet": 1,
+      "unknown": 9
+    },
+    "standards": [
+      {
+        "id": "A1",
+        "status": "unknown",
+        "text": "Fire Risk Reduction Community listed by the Board of Forestry pursuant to Public Resources Code section 4290.1"
+      },
+      {
+        "id": "A2",
+        "status": "unknown",
+        "text": "Firewise USA Site in Good Standing"
+      },
+      {
+        "id": "B1a",
+        "status": "unknown",
+        "text": "Clearing of vegetation and debris from under decks"
+      },
+      {
+        "id": "B1b",
+        "status": "unknown",
+        "text": "Clearing of vegetation, debris, mulch, stored combustible materials, and any and all movable combustible objects, from the area within five (5) feet"
+      },
+      {
+        "id": "B1c",
+        "status": "unknown",
+        "text": "Incorporation of only noncombustible materials into that portion of any improvements situated within five (5) feet"
+      },
+      {
+        "id": "B1d",
+        "status": "unknown",
+        "text": "Removal or absence of combustible structures from the area within thirty (30) feet"
+      },
+      {
+        "id": "B1e",
+        "status": "unknown",
+        "text": "Whether the property complies with Section 4291 of the Public Resources Code, and any applicable local ordinances"
+      },
+      {
+        "id": "B2a",
+        "status": "unknown",
+        "text": "Class-A Fire Rated Roof"
+      },
+      {
+        "id": "B2b",
+        "status": "met",
+        "text": "Enclosed Eaves"
+      },
+      {
+        "id": "B2c",
+        "status": "met",
+        "text": "Fire-Resistant Vents"
+      },
+      {
+        "id": "B2d",
+        "status": "not-met",
+        "text": "Multipane windows, including dual pane windows, or functional shutters"
+      },
+      {
+        "id": "B2e",
+        "status": "unknown",
+        "text": "At least six (6) inches of noncombustible vertical clearance at the bottom"
+      }
+    ],
+    "headline": {
+      "fhsz": "Non-Wildland",
+      "responsibilityArea": "LRA",
+      "wildfireAnnualFrequency": 0.000007999999979802,
+      "fieldCount": 24,
+      "geocode": "rooftop"
+    },
+    "keyFacts": [
+      {
+        "key": "wildfire_annual_frequency",
+        "value": 0.000007999999979802,
+        "unit": null,
+        "source": "FEMA_NRI",
+        "confidence": "medium",
+        "vintage": "FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data)"
+      },
+      {
+        "key": "fire_hazard_severity_zone_class",
+        "value": "Non-Wildland",
+        "unit": null,
+        "source": "CALFIRE_FHSZ",
+        "confidence": "high",
+        "vintage": "CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases"
+      },
+      {
+        "key": "slope_degrees",
+        "value": 4.691714763641357,
+        "unit": "degrees",
+        "source": "USGS_3DEP_COG",
+        "confidence": "medium",
+        "vintage": null
+      },
+      {
+        "key": "tree_canopy_pct",
+        "value": 24,
+        "unit": "percent",
+        "source": "USFS_NLCD_TCC",
+        "confidence": "high",
+        "vintage": "USFS/MRLC NLCD Tree Canopy Cover 2025 (v2025-6), CONUS COG (~120 m block-mean canopy %)"
+      }
+    ],
+    "packet": "packet-2485-santa-rosa-ave.pdf",
+    "generatedAt": "2026-08-10"
+  },
+  {
+    "id": "2269-santa-rosa-ave",
+    "address": "2269 SANTA ROSA AVE, ALTADENA, CA 91001",
+    "decision": "remediate-first",
+    "rationale": "Documented gaps (2) outweigh met standards (1). Filing now invites a reconsideration that re-affirms the score. Close the ranked gaps below, then appeal.",
+    "counts": {
+      "met": 1,
+      "notMet": 2,
+      "unknown": 9
+    },
+    "standards": [
+      {
+        "id": "A1",
+        "status": "unknown",
+        "text": "Fire Risk Reduction Community listed by the Board of Forestry pursuant to Public Resources Code section 4290.1"
+      },
+      {
+        "id": "A2",
+        "status": "unknown",
+        "text": "Firewise USA Site in Good Standing"
+      },
+      {
+        "id": "B1a",
+        "status": "unknown",
+        "text": "Clearing of vegetation and debris from under decks"
+      },
+      {
+        "id": "B1b",
+        "status": "unknown",
+        "text": "Clearing of vegetation, debris, mulch, stored combustible materials, and any and all movable combustible objects, from the area within five (5) feet"
+      },
+      {
+        "id": "B1c",
+        "status": "unknown",
+        "text": "Incorporation of only noncombustible materials into that portion of any improvements situated within five (5) feet"
+      },
+      {
+        "id": "B1d",
+        "status": "unknown",
+        "text": "Removal or absence of combustible structures from the area within thirty (30) feet"
+      },
+      {
+        "id": "B1e",
+        "status": "unknown",
+        "text": "Whether the property complies with Section 4291 of the Public Resources Code, and any applicable local ordinances"
+      },
+      {
+        "id": "B2a",
+        "status": "unknown",
+        "text": "Class-A Fire Rated Roof"
+      },
+      {
+        "id": "B2b",
+        "status": "not-met",
+        "text": "Enclosed Eaves"
+      },
+      {
+        "id": "B2c",
+        "status": "not-met",
+        "text": "Fire-Resistant Vents"
+      },
+      {
+        "id": "B2d",
+        "status": "met",
+        "text": "Multipane windows, including dual pane windows, or functional shutters"
+      },
+      {
+        "id": "B2e",
+        "status": "unknown",
+        "text": "At least six (6) inches of noncombustible vertical clearance at the bottom"
+      }
+    ],
+    "headline": {
+      "fhsz": "Non-Wildland",
+      "responsibilityArea": "LRA",
+      "wildfireAnnualFrequency": 0.000007999999979802,
+      "fieldCount": 24,
+      "geocode": "rooftop"
+    },
+    "keyFacts": [
+      {
+        "key": "wildfire_annual_frequency",
+        "value": 0.000007999999979802,
+        "unit": null,
+        "source": "FEMA_NRI",
+        "confidence": "medium",
+        "vintage": "FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data)"
+      },
+      {
+        "key": "fire_hazard_severity_zone_class",
+        "value": "Non-Wildland",
+        "unit": null,
+        "source": "CALFIRE_FHSZ",
+        "confidence": "high",
+        "vintage": "CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases"
+      },
+      {
+        "key": "slope_degrees",
+        "value": 5.234614372253418,
+        "unit": "degrees",
+        "source": "USGS_3DEP_COG",
+        "confidence": "medium",
+        "vintage": null
+      },
+      {
+        "key": "tree_canopy_pct",
+        "value": 24,
+        "unit": "percent",
+        "source": "USFS_NLCD_TCC",
+        "confidence": "high",
+        "vintage": "USFS/MRLC NLCD Tree Canopy Cover 2025 (v2025-6), CONUS COG (~120 m block-mean canopy %)"
+      }
+    ],
+    "packet": "packet-2269-santa-rosa-ave.pdf",
+    "generatedAt": "2026-08-10"
+  },
+  {
+    "id": "4844-commonwealth-ave",
+    "address": "4844 Commonwealth Ave, La Canada Flintridge, CA 91011",
+    "decision": "remediate-first",
+    "rationale": "No enumerated standard is documented as met or unmet for this property. An appeal must argue from the §2644.9(d)(1) standards, so filing now would rest on exposure facts alone. Document the checklist below first; the decision re-runs when evidence lands.",
+    "counts": {
+      "met": 0,
+      "notMet": 0,
+      "unknown": 12
+    },
+    "standards": [
+      {
+        "id": "A1",
+        "status": "unknown",
+        "text": "Fire Risk Reduction Community listed by the Board of Forestry pursuant to Public Resources Code section 4290.1"
+      },
+      {
+        "id": "A2",
+        "status": "unknown",
+        "text": "Firewise USA Site in Good Standing"
+      },
+      {
+        "id": "B1a",
+        "status": "unknown",
+        "text": "Clearing of vegetation and debris from under decks"
+      },
+      {
+        "id": "B1b",
+        "status": "unknown",
+        "text": "Clearing of vegetation, debris, mulch, stored combustible materials, and any and all movable combustible objects, from the area within five (5) feet"
+      },
+      {
+        "id": "B1c",
+        "status": "unknown",
+        "text": "Incorporation of only noncombustible materials into that portion of any improvements situated within five (5) feet"
+      },
+      {
+        "id": "B1d",
+        "status": "unknown",
+        "text": "Removal or absence of combustible structures from the area within thirty (30) feet"
+      },
+      {
+        "id": "B1e",
+        "status": "unknown",
+        "text": "Whether the property complies with Section 4291 of the Public Resources Code, and any applicable local ordinances"
+      },
+      {
+        "id": "B2a",
+        "status": "unknown",
+        "text": "Class-A Fire Rated Roof"
+      },
+      {
+        "id": "B2b",
+        "status": "unknown",
+        "text": "Enclosed Eaves"
+      },
+      {
+        "id": "B2c",
+        "status": "unknown",
+        "text": "Fire-Resistant Vents"
+      },
+      {
+        "id": "B2d",
+        "status": "unknown",
+        "text": "Multipane windows, including dual pane windows, or functional shutters"
+      },
+      {
+        "id": "B2e",
+        "status": "unknown",
+        "text": "At least six (6) inches of noncombustible vertical clearance at the bottom"
+      }
+    ],
+    "headline": {
+      "fhsz": "Very High",
+      "responsibilityArea": "LRA",
+      "wildfireAnnualFrequency": 0.0018715079388487447,
+      "fieldCount": 24,
+      "geocode": "rooftop"
+    },
+    "keyFacts": [
+      {
+        "key": "wildfire_annual_frequency",
+        "value": 0.0018715079388487447,
+        "unit": null,
+        "source": "FEMA_NRI",
+        "confidence": "medium",
+        "vintage": "FEMA National Risk Index per-tract annualized frequencies (local table; NOAA SPC/NCEI/Vaisala source data)"
+      },
+      {
+        "key": "fire_hazard_severity_zone_class",
+        "value": "Very High",
+        "unit": null,
+        "source": "CALFIRE_FHSZ",
+        "confidence": "high",
+        "vintage": "CAL FIRE OSFM LRA FHSZ (recommended), map dated 2025-03-24, all 4 rollout phases"
+      },
+      {
+        "key": "slope_degrees",
+        "value": 4.152191638946533,
+        "unit": "degrees",
+        "source": "USGS_3DEP_COG",
+        "confidence": "medium",
+        "vintage": null
+      },
+      {
+        "key": "tree_canopy_pct",
+        "value": 23,
+        "unit": "percent",
+        "source": "USFS_NLCD_TCC",
+        "confidence": "high",
+        "vintage": "USFS/MRLC NLCD Tree Canopy Cover 2025 (v2025-6), CONUS COG (~120 m block-mean canopy %)"
+      }
+    ],
+    "packet": "packet-4844-commonwealth-ave.pdf",
+    "generatedAt": "2026-08-10"
+  }
+]

@@ -86,13 +86,43 @@ export function renderPacket(p: PacketInput): string {
         '',
       );
     }
-    L.push('| Fact | Value | Source | Confidence | Vintage |', '|---|---|---|---|---|');
-    for (const [key, f] of Object.entries(p.facts.fields)) {
-      if (f.status && f.status !== 'ok') continue;
-      const val = `${typeof f.value === 'number' ? +Number(f.value).toFixed(3) : f.value}${f.unit ? ` ${f.unit}` : ''}`;
-      L.push(`| ${esc(key)} | ${esc(val)} | ${esc(f.source ?? '—')} | ${esc(f.confidence ?? '—')} | ${esc(f.dataset_vintage ?? '—')} |`);
+    const wf = p.facts.fields['wildfire_annual_frequency'];
+    if (wf && typeof wf.value === 'number') {
+      L.push(
+        `Modeled annual wildfire frequency at the parcel: **${wf.value.toExponential(2)}**${wf.unit ? ` ${wf.unit}` : ''} (${wf.source ?? 'modeled'}, confidence ${wf.confidence ?? 'n/a'}).`,
+        '',
+      );
     }
+    const factRow = (key: string, f: (typeof p.facts.fields)[string]) => {
+      const val = `${typeof f.value === 'number' ? +Number(f.value).toFixed(3) : f.value}${f.unit ? ` ${f.unit}` : ''}`;
+      return `| ${esc(key)} | ${esc(val)} | ${esc(f.source ?? '—')} | ${esc(f.confidence ?? '—')} | ${esc(f.dataset_vintage ?? '—')} |`;
+    };
+    const WILDFIRE_KEYS = new Set([
+      'fire_hazard_severity_zone_class',
+      'fire_hazard_responsibility_area',
+      'wildfire_annual_frequency',
+      'elevation',
+      'slope_degrees',
+      'lcms_class',
+      'tree_canopy_pct',
+      'ndvi_current',
+      'ndvi_change_5y',
+    ]);
+    const entries = Object.entries(p.facts.fields).filter(([, f]) => !f.status || f.status === 'ok');
+    L.push('| Fact | Value | Source | Confidence | Vintage |', '|---|---|---|---|---|');
+    for (const [key, f] of entries.filter(([k]) => WILDFIRE_KEYS.has(k))) L.push(factRow(key, f));
     L.push('');
+    const context = entries.filter(([k]) => !WILDFIRE_KEYS.has(k));
+    if (context.length) {
+      L.push(
+        `**Broader hazard context** (natural-hazard screen of the same parcel — ${context.length} additional cited facts; wildfire is the only hazard class at issue in this appeal):`,
+        '',
+        '| Fact | Value | Source | Confidence | Vintage |',
+        '|---|---|---|---|---|',
+      );
+      for (const [key, f] of context) L.push(factRow(key, f));
+      L.push('');
+    }
     if (p.facts.geocode?.accuracy_type) {
       L.push(
         `Location resolution: ${p.facts.geocode.accuracy_type}-accuracy geocode${p.facts.geocode.parcel_grade ? ' (parcel-grade)' : ''} of "${p.facts.geocode.normalized_address ?? p.address}" via ${p.facts.geocode.provider ?? 'geocoder'}.`,

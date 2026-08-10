@@ -12,30 +12,44 @@ import type { ParcelFacts } from './types.ts';
 const API_BASE = 'https://api.mireye.com';
 const SPIKE_DIR = new URL('../spike', import.meta.url).pathname;
 
+// Both allowed presets (hard rule: /v1/fetch presets only, never /v1/lookup).
+// wildfire_underwrite is primary (its geocode/fields win on overlap);
+// natural_hazard adds broader-hazard context incl. wildfire_annual_frequency.
+const PRESETS = ['wildfire_underwrite', 'natural_hazard'] as const;
+
 export async function fetchParcelFacts(address: string): Promise<ParcelFacts> {
   // MIREYE_OFFLINE=1 forces fixture replay even with a token — dev re-renders
   // shouldn't spend credits (1/field/pull).
   const token = process.env.MIREYE_OFFLINE === '1' ? undefined : process.env.MIREYE_API_TOKEN;
+  const slug = address.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-');
   if (token) {
-    const res = await fetch(`${API_BASE}/v1/fetch`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ address, preset: 'wildfire_underwrite' }),
-    });
-    if (!res.ok) {
-      const body = await res.text().catch(() => '');
-      throw new Error(`Mireye /v1/fetch failed: HTTP ${res.status} ${body}`);
-    }
-    const raw = await res.json();
-    const slug = address.split(',')[0].trim().toLowerCase().replace(/\s+/g, '-');
-    writeFileSync(join(SPIKE_DIR, `mireye-fetch-${slug}.json`), JSON.stringify(raw, null, 2));
-    return parcelFactsFromRaw(address, 'live', raw);
+    const raws = await Promise.all(
+      PRESETS.map(async (preset) => {
+        const res = await fetch(`${API_BASE}/v1/fetch`, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ address, preset }),
+        });
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error(`Mireye /v1/fetch (${preset}) failed: HTTP ${res.status} ${body}`);
+        }
+        return res.json();
+      }),
+    );
+    writeFileSync(join(SPIKE_DIR, `mireye-fetch-${slug}.json`), JSON.stringify(raws[0], null, 2));
+    writeFileSync(join(SPIKE_DIR, `mireye-fetch-${slug}-hazard.json`), JSON.stringify(raws[1], null, 2));
+    return parcelFactsFromRaw(address, 'live', raws[0], raws[1]);
   }
 
   const fixture = fixtureFor(address);
   if (fixture) {
     const raw = JSON.parse(readFileSync(fixture, 'utf8'));
-    return parcelFactsFromRaw(address, 'fixture', raw);
+    let hazardRaw;
+    try {
+      hazardRaw = JSON.parse(readFileSync(fixture.replace(/\.json$/, '-hazard.json'), 'utf8'));
+    } catch {}
+    return parcelFactsFromRaw(address, 'fixture', raw, hazardRaw);
   }
 
   return { address, mode: 'pending', fields: {} };
@@ -53,16 +67,23 @@ function fixtureFor(address: string): string | null {
   }
 }
 
-function parcelFactsFromRaw(address: string, mode: 'live' | 'fixture', raw: any): ParcelFacts {
+function parcelFactsFromRaw(
+  address: string,
+  mode: 'live' | 'fixture',
+  raw: any,
+  hazardRaw?: any,
+): ParcelFacts {
   if (!raw?.fields || typeof raw.fields !== 'object')
     throw new Error('Mireye response missing .fields — shape changed from the pinned 2026-08-10 format');
+  // hazard preset first so wildfire_underwrite wins the two overlapping keys
+  const fields = { ...(hazardRaw?.fields ?? {}), ...raw.fields };
   return {
     address,
     mode,
-    fields: raw.fields,
+    fields,
     fetchedAt: raw.fetched_at,
     geocode: raw.geocode,
-    partialFailures: raw.partial_failures ?? [],
+    partialFailures: [...(raw.partial_failures ?? []), ...(hazardRaw?.partial_failures ?? [])],
     raw,
   };
 }

@@ -74,6 +74,13 @@ Demo street candidates (survived/destroyed, balanced): **Santa Rosa 70/77**, **E
 - Build Challenge submission format is NOT on docs.mireye.ai (checked llms.txt index too) — **get it from the original challenge announcement**.
 - Credit spend so far: ~3 live pulls ×8 + geocodes ≈ 30 credits of 5k+.
 
+## Day 3 final push (2026-08-10 night) — "fix everything that might lose"
+- **Adversarial code review** (subagent): 6 real findings fixed — noon-pinned deadline dates, markdown cell escaping, positive-only survival deltas (unscreened vents OUT-SURVIVE fine mesh in raw Eaton data — clamp was load-bearing), appeals CLI arg guards, DAMAGE bucket guard, quote-sanitized DINS where-clauses. Live full demo re-verified after fixes.
+- **Second preset wired in**: natural_hazard (19 fields, 2 overlap) → **24 cited facts/property**. Gem: `wildfire_annual_frequency` (FEMA NRI) — Altadena parcels 8×10⁻⁶/yr (≈1-in-125,000) vs La Cañada 1.9×10⁻³ (**234×**) — federal model independently corroborates all three decisions. Packet: frequency in exposure prose + "Broader hazard context" table.
+- **Case dashboard**: `npm run site` → `out/index.html` (self-contained; legal-editorial: Libre Caslon + IBM Plex Mono, paper/ink/poppy, rubber-stamp decisions, 12-standard punch grids, statutory clock lines, evidence-in-flight band). Generated from `data/cases.json` (pipeline now persists case summaries). Demo Beat 4 shows it.
+- Non-appeal packets now headed "not for filing"; demo script + README updated (24 facts, dashboard beat).
+- Credit spend total ≈ 250 of 5,000.
+
 ## Ideation findings (2026-08-10, bounded lane — from REAL shapes)
 - **Demo choreography (3 min):** (1) cold open: "this house survived Eaton; its insurer scored it high-risk anyway" ~15s → (2) live run on 2485: pull logs, 8 cited fields, decision APPEAL ~40s → (3) packet scroll: FHSZ Non-Wildland vs score, statutory clock table, verbatim (k)(B) dollar demand ~60s → (4) run 2269 → REMEDIATE-FIRST ranked gaps ("the agent declines — that's deciding") ~30s → (5) clock-tracker screen + broker close: "producer forwards in 5 days; we track the insurer's 10" ~30s.
 - **Packet:** per-fact table (value/source/confidence/vintage) + rooftop-geocode line + notes in provenance appendix — already built. Confidence is a string enum; render as-is.

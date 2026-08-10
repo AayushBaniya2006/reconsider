@@ -28,7 +28,7 @@ An agent that always appeals isn't deciding. Two of three real runs said *don't 
 - **Survivor data corroborates; it never argues.** CAL FIRE DINS damage-inspection data from the Eaton Fire (7,893 undamaged vs 9,419 destroyed structures) backs each standard — e.g. ember-resistant ≤1/8″ vent mesh survived at 73% vs 51% for coarse mesh among single-family residences.
 - **The methodology is disclosed before an actuary can attack it.** All comparisons exclude `Unknown` values (inspectors can't assess features that burned — a survivorship artifact that would otherwise inflate every effect) and are restricted to single-family residences (~30% of raw DINS rows are sheds/garages that invert pooled survival rates). Excluded counts are printed in every table.
 - **Every fact carries its provenance.** Mireye fields arrive with source, source URL, retrieval timestamp, confidence, and dataset vintage — rendered per-fact in the packet, down to the rooftop parcel-grade geocode.
-- **The anchor exposure fact:** CAL FIRE's own 2025 FHSZ map, cited to CAL FIRE's own server. When the State classifies a parcel "Non-Wildland" and an insurer scores it high-risk, the packet demands the §2644.9(i) reconsideration reconcile the two.
+- **The anchor exposure facts:** CAL FIRE's own 2025 FHSZ map, cited to CAL FIRE's own server — and FEMA NRI's modeled annual wildfire frequency (the Altadena demo parcels: 8×10⁻⁶/yr, ≈1-in-125,000; the La Cañada control: 234× higher). When the State and the federal risk model both disagree with an insurer's score, the packet demands the §2644.9(i) reconsideration reconcile them. 24 cited facts per property across the two permitted presets (`wildfire_underwrite` + `natural_hazard`).
 - **Missing evidence is requested, not ignored.** The agent filed a live field request with the data provider (FRAP perimeter distance + last burn year, `fr_43cf7d…`) via Mireye's field-request API; pending requests appear in the packet as "evidence in flight."
 
 ## The buyer and the clock
@@ -56,7 +56,7 @@ npm run packet -- "<address>"            # live pull; raw response archived to s
 MIREYE_OFFLINE=1 npm run packet -- "<address>"   # replay archived fixture, zero credits
 ```
 
-Outputs land in `out/` (`.md`, `.html`, `.pdf` per property, plus `appeals.html`). PDF rendering uses the installed Chrome via puppeteer-core.
+Outputs land in `out/` (`.md`, `.html`, `.pdf` per property, plus `index.html` — the case dashboard — and `appeals.html`). PDF rendering uses the installed Chrome via puppeteer-core. `npm run site` regenerates the dashboard from `data/*.json`.
 
 ## Architecture
 
@@ -70,6 +70,7 @@ src/packet.ts     packet renderer (statutory clock, scorecard, (k)(B) demand tab
 src/render.ts     markdown → print-styled HTML → PDF
 src/registry.ts   appeal registry + statutory clock math (data/appeals.json)
 src/appeals.ts    producer CLI + dashboard
+src/site.ts       static case dashboard (out/index.html) from data/*.json
 ```
 
 ## Honesty notes

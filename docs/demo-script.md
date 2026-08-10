@@ -18,8 +18,9 @@ the score. Nobody uses it, because nobody assembles the evidence. Watch an agent
 npm run packet -- "2485 SANTA ROSA AVE, ALTADENA, CA 91001"
 ```
 
-Narrate the stage logs as they print: *"Live pull from Mireye — eight parcel facts, every one
-with a source URL, a timestamp, a confidence, a dataset vintage. CAL FIRE damage-inspection
+Narrate the stage logs as they print: *"Live pull from Mireye — twenty-four parcel facts across
+two presets, every one with a source URL, a timestamp, a confidence, a dataset vintage. FEMA's
+own model puts annual wildfire frequency here at one in 125,000. CAL FIRE damage-inspection
 comparables. Scored against the twelve mitigation standards enumerated in the regulation itself.
 Decision: APPEAL."*
 
@@ -60,7 +61,10 @@ forward a client's appeal. Reconsider tracks every statutory clock. The insurer 
 acknowledgment by August 20 and a written reconsideration by September 9. Miss one and the
 producer is quoting a missed legal deadline, not sending a nag."*
 
-Flash `out/appeals.html` dashboard for two seconds.
+Open `out/index.html` — the case dashboard. Say: *"Three case files, three stamps, twelve
+standards on a punch card each, and every clock the law starts."* Hold 5 seconds; hover a punch
+cell to show the standard text. (La Cañada's modeled wildfire frequency reads 234× the Altadena
+parcels' — the data agrees with the agent's refusals.)
 
 ## Beat 5 — close (2:35–3:00)
 

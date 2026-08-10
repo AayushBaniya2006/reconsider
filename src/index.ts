@@ -76,5 +76,40 @@ const appeal = upsertAppeal({
   packetPath: outPath.replace(/\.md$/, '.pdf'),
   createdAt: new Date().toLocaleDateString('en-CA'),
 });
+
+// Case summary for the static site generator (src/site.ts) — keeps site
+// builds pure/offline while the pipeline stays the single source of truth.
+const casesPath = new URL('../data/cases.json', import.meta.url).pathname;
+let cases: any[] = [];
+try {
+  cases = JSON.parse(readFileSync(casesPath, 'utf8'));
+} catch {}
+const summary = {
+  id: slug,
+  address,
+  decision: decision.action,
+  rationale: decision.rationale,
+  counts: { met: decision.metCount, notMet: decision.notMetCount, unknown: decision.unknownCount },
+  standards: assessments.map((a) => ({ id: a.id, status: a.status, text: a.text })),
+  headline: {
+    fhsz: facts.fields['fire_hazard_severity_zone_class']?.value ?? null,
+    responsibilityArea: facts.fields['fire_hazard_responsibility_area']?.value ?? null,
+    wildfireAnnualFrequency: facts.fields['wildfire_annual_frequency']?.value ?? null,
+    fieldCount: Object.keys(facts.fields).length,
+    geocode: facts.geocode?.accuracy_type ?? null,
+  },
+  keyFacts: Object.entries(facts.fields)
+    .filter(([k]) =>
+      ['fire_hazard_severity_zone_class', 'wildfire_annual_frequency', 'tree_canopy_pct', 'slope_degrees'].includes(k),
+    )
+    .map(([k, f]) => ({ key: k, value: f.value, unit: f.unit, source: f.source, confidence: f.confidence, vintage: f.dataset_vintage })),
+  packet: `packet-${slug}.pdf`,
+  generatedAt: new Date().toLocaleDateString('en-CA'),
+};
+const ix = cases.findIndex((c) => c.id === slug);
+if (ix >= 0) cases[ix] = summary;
+else cases.push(summary);
+writeFileSync(casesPath, JSON.stringify(cases, null, 2) + '\n');
+
 console.error(`      appeal tracked: ${appeal.id} (status: ${appeal.status}) — npm run appeals`);
 console.log(outPath);

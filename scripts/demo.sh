@@ -15,7 +15,7 @@ npx tsx src/index.ts "2269 SANTA ROSA AVE, ALTADENA, CA 91001"
 banner "3/4 · 4844 Commonwealth Ave, La Cañada Flintridge — Very High FHSZ, no evidence"
 npx tsx src/index.ts "4844 Commonwealth Ave, La Canada Flintridge, CA 91011"
 
-banner "4/4 · Producer view — statutory clocks"
+banner "4/4 · Producer view — statutory clocks + case dashboard"
 npx tsx src/appeals.ts
-npx tsx src/appeals.ts html
-echo "Artifacts: out/*.pdf · out/appeals.html"
+npx tsx src/site.ts
+echo "Artifacts: out/*.pdf · out/index.html (case dashboard) · out/appeals.html"
