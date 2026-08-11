@@ -4,6 +4,10 @@
 
 **Not a report. A filing.** A report describes risk; a filing under 10 CCR §2644.9(i) starts a clock the insurer must answer in writing.
 
+![Reconsider case dashboard — three real properties, three different agent decisions](docs/assets/dashboard.png)
+
+*The case dashboard (`npm run site` → `out/index.html`): three real properties, three different decisions, every statutory clock the law starts.*
+
 Under 10 CCR §2644.9(i), every California homeowner has the right to appeal their insurer's wildfire risk score. The insurer must acknowledge in writing within 10 calendar days and issue a written reconsideration within 30. Almost nobody exercises this right, because assembling the evidence — the enumerated mitigation standards, the parcel facts, the comparables — is exactly the kind of work nobody does. Reconsider does it.
 
 ## What one command produces
