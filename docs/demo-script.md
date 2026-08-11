@@ -10,7 +10,8 @@ Fallback if Mireye hiccups mid-demo: prepend `MIREYE_OFFLINE=1` — replays arch
 Say: *"January 2025, Eaton Fire, Altadena. This house — 2485 Santa Rosa Avenue — survived.
 CAL FIRE's own map says its parcel is Non-Wildland. Its insurer can still score it high-risk,
 and that score follows the homeowner everywhere. California gives them a legal right to appeal
-the score. Nobody uses it, because nobody assembles the evidence. Watch an agent do it."*
+the score. Nobody uses it, because nobody assembles the evidence. Watch an agent do it.
+This is not a report — it's a filing, and it starts a legal clock."*
 
 ## Beat 2 — the appeal, live (0:20–1:10)
 
@@ -82,3 +83,13 @@ End card: repo + the three decisions on screen.
 - [ ] Poll field request status before recording — if fields went live, wire them in and upgrade Beat 5 to show the delivered fact
 - [ ] appeals.json state correct (2485 forwarded, 2269/4844 draft)
 - [ ] Confirm submission format from the challenge announcement (not in docs.mireye.ai)
+
+## Recording craft
+
+- Terminal ≥18 pt, window sized so no line wraps; pre-type commands and recall with ↑ (no live typos)
+- 1080p minimum, Do Not Disturb on, notifications off, close every other app
+- Mic close, quiet room; record narration separately from screen if pacing fights you
+- Scroll the PDF and dashboard *slowly* — judges pause on frames; give them clean ones
+- Two full takes minimum; pick the calmer one. Confidence reads as credibility
+- End frame: the dashboard with all three stamps visible + repo URL — hold 4 seconds
+- If asked "isn't this legal advice?": it prepares a filing the policyholder already has the right to make; producer reviews before filing

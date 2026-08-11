@@ -81,6 +81,13 @@ Demo street candidates (survived/destroyed, balanced): **Santa Rosa 70/77**, **E
 - Non-appeal packets now headed "not for filing"; demo script + README updated (24 facts, dashboard beat).
 - Credit spend total ≈ 250 of 5,000.
 
+## Competitive maneuvers (2026-08-10 late)
+- Likely field: map visualizers, site-selection tools (the 106-field data_center preset is an idea magnet), property-report generators (closest confusable neighbor), /v1/ask chatbots. Counter-position: **"Not a report. A filing."** — now in README, dashboard thesis, demo cold open.
+- **SUBMISSION.md** added — the judge's one-page skim (90-sec pitch, Mireye load-bearing section incl. field-request id, scrutiny section, 60-sec try-it, roadmap).
+- **Judge-proofing verified:** tokenless clone runs end-to-end on committed fixtures (mode=fixture, full PDF).
+- **Out-of-sample replication verified (2026-08-10):** Palisades Fire SFR vents — Mesh ≤1/8" 53% (916/1720) vs >1/8" 39% (1349/3450), +14pp, same direction as Eaton +22pp; Unknown artifact 7%/0% — cited in SUBMISSION.md. Eaves weaker there (73 vs 68) — not cited as replication.
+- Recording-craft checklist added to demo script.
+
 ## Ideation findings (2026-08-10, bounded lane — from REAL shapes)
 - **Demo choreography (3 min):** (1) cold open: "this house survived Eaton; its insurer scored it high-risk anyway" ~15s → (2) live run on 2485: pull logs, 8 cited fields, decision APPEAL ~40s → (3) packet scroll: FHSZ Non-Wildland vs score, statutory clock table, verbatim (k)(B) dollar demand ~60s → (4) run 2269 → REMEDIATE-FIRST ranked gaps ("the agent declines — that's deciding") ~30s → (5) clock-tracker screen + broker close: "producer forwards in 5 days; we track the insurer's 10" ~30s.
 - **Packet:** per-fact table (value/source/confidence/vintage) + rooftop-geocode line + notes in provenance appendix — already built. Confidence is a string enum; render as-is.

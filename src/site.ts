@@ -198,8 +198,8 @@ footer .src{font:400 11px var(--mono);letter-spacing:.02em}
   </div>
 </header>
 
-<section class="thesis"><p>The agent scored three real properties against the twelve enumerated
-mitigation standards — and <strong>declined to file ${declined === 2 ? 'two of the three' : String(declined)}</strong>.
+<section class="thesis"><p><em>Not a report — a filing.</em> The agent scored three real properties
+against the twelve enumerated mitigation standards — and <strong>declined to file ${declined === 2 ? 'two of the three' : String(declined)}</strong>.
 An agent that always appeals isn't deciding.</p></section>
 
 <blockquote class="statute">“If the policyholder or applicant appeals the wildfire risk score or other wildfire risk

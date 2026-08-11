@@ -2,6 +2,8 @@
 
 **An agent that decides whether to appeal a California wildfire risk score — and assembles the legally-framed, fully-cited appeal packet when the answer is yes.**
 
+**Not a report. A filing.** A report describes risk; a filing under 10 CCR §2644.9(i) starts a clock the insurer must answer in writing.
+
 Under 10 CCR §2644.9(i), every California homeowner has the right to appeal their insurer's wildfire risk score. The insurer must acknowledge in writing within 10 calendar days and issue a written reconsideration within 30. Almost nobody exercises this right, because assembling the evidence — the enumerated mitigation standards, the parcel facts, the comparables — is exactly the kind of work nobody does. Reconsider does it.
 
 ## What one command produces
