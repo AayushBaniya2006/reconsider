@@ -93,3 +93,4 @@ End card: repo + the three decisions on screen.
 - Two full takes minimum; pick the calmer one. Confidence reads as credibility
 - End frame: the dashboard with all three stamps visible + repo URL — hold 4 seconds
 - If asked "isn't this legal advice?": it prepares a filing the policyholder already has the right to make; producer reviews before filing
+- If asked "Non-Wildland — but the street burned!": exactly — which is why the *argument* rests on the enumerated hardening standards, never the map. The classification mismatch is a demand that the insurer reconcile its score with the State's map in the written reconsideration — not a claim of zero risk. The agent's own third case (La Cañada, Very High, 234× frequency) proves it doesn't pretend maps equal safety.
