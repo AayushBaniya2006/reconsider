@@ -73,7 +73,16 @@ src/render.ts     markdown → print-styled HTML → PDF
 src/registry.ts   appeal registry + statutory clock math (data/appeals.json)
 src/appeals.ts    producer CLI + dashboard
 src/site.ts       static case dashboard (out/index.html) from data/*.json
+src/*.test.ts     hard rules as executable tests (npm test) — 9 passing
 ```
+
+## Tests
+
+`npm test` runs the hard rules as an executable spec (Node's built-in runner, no extra deps): the
+agent must be able to decline to appeal (all-unknown → document-first; two high-impact gaps →
+remediate-first; mostly-met → appeal), gaps rank by DINS survival delta, and the §2644.9 statutory
+clocks compute correct, DST-stable calendar deadlines. The packet's Eaton survival percentages were
+also independently recomputed against the live DINS service and match to the exact count.
 
 ## Honesty notes
 

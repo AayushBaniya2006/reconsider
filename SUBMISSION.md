@@ -49,6 +49,9 @@ missed deadline into quotable leverage. Score appeals recur every policy year.
 - Where the raw data cuts against a claim, the packet says so or stays silent — survival deltas
   are only cited when positive; roof material is never passed off as a Class-A rating; a property
   with no evidence gets a checklist, not a filing.
+- `npm test` encodes the hard rules as 9 passing assertions (the agent must be able to *not* file;
+  clocks must be DST-stable). The packet's DINS percentages were independently recomputed against
+  the live service and match to the exact count.
 
 ## Try it in 60 seconds
 

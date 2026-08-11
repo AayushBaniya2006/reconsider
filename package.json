@@ -5,7 +5,8 @@
   "scripts": {
     "packet": "tsx src/index.ts",
     "appeals": "tsx src/appeals.ts",
-    "site": "tsx src/site.ts"
+    "site": "tsx src/site.ts",
+    "test": "node --import tsx --test src/*.test.ts"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
