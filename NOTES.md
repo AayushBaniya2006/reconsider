@@ -81,6 +81,15 @@ Demo street candidates (survived/destroyed, balanced): **Santa Rosa 70/77**, **E
 - Non-appeal packets now headed "not for filing"; demo script + README updated (24 facts, dashboard beat).
 - Credit spend total ≈ 250 of 5,000.
 
+## SUBMISSION (form requirements confirmed 2026-08-12)
+- Google Form fields: Name, Email, **Git Repo Link**, **One Pager Link**, **2-Min Demo Video** (optional/recommended), **Feedback for Mireye** (required). Deadline Aug 15, winners Aug 20. Prizes: 1st=Mireye internship, 2nd–8th cash+credits.
+- **Repo is PUBLIC**: https://github.com/AayushBaniya2006/reconsider
+- **One-pager LIVE** (GitHub Pages, source main /docs): https://aayushbaniya2006.github.io/reconsider/ — prose one-pager answering the 3 judging questions + "agent not a map" rule, dashboard hero. Source: `docs/index.html`.
+- **Demo script retimed to 2:00** (form wants 2 min; 3-min kept as extended cut) — `docs/demo-script.md`.
+- **Feedback field text**: `docs/feedback-for-mireye.md` (product + field-request + outage postmortem).
+- Judging fit: "build an agent not a map" ✓ (agent decides, no map); "who writes the cheque" ✓ (producers, §(j) 5-day duty); "combine with something weird" ✓ (score appeal + DINS forensics + statute engine).
+- REMAINING (human only): send founder email (now partly redundant with Feedback field — optional); record 2-min video; fill+submit the Google Form. FRAP field request still queued (pos 6) — may not land before submit; "evidence in flight" story stands regardless.
+
 ## Competitive maneuvers (2026-08-10 late)
 - Likely field: map visualizers, site-selection tools (the 106-field data_center preset is an idea magnet), property-report generators (closest confusable neighbor), /v1/ask chatbots. Counter-position: **"Not a report. A filing."** — now in README, dashboard thesis, demo cold open.
 - **SUBMISSION.md** added — the judge's one-page skim (90-sec pitch, Mireye load-bearing section incl. field-request id, scrutiny section, 60-sec try-it, roadmap).
