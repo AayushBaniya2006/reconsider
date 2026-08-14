@@ -1,7 +1,7 @@
 # Wildfire Risk Score Review — Recommendation: Remediate Before Appealing
 
 **Subject property:** 2269 SANTA ROSA AVE, ALTADENA, CA 91001
-**Date:** 2026-08-10
+**Date:** 2026-08-14
 **Prepared for the policyholder and producer — not for filing.** Complete the actions below first; when filed, the producer's §2644.9(j) 5-day forwarding duty applies.
 
 ## Decision
@@ -183,8 +183,8 @@ Subject property's own CAL FIRE damage-inspection record: damage="No Damage", ro
 - [B2c] Corroboration: Eaton Fire survival by VENTSCREEN (No Damage vs Destroyed, 'Unknown' excluded): Unscreened 89%, No Vents 86%, Mesh Screen <= 1/8" 73%, Mesh Screen > 1/8" 51% — standard-conforming category: Mesh Screen <= 1/8".
 - [B2d] WINDOWPANE = "Multi Pane" — CAL FIRE DINS damage-inspection record for the subject property (POSTFIRE_MASTER_DATA_SHARE, Eaton Fire) <https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/POSTFIRE_MASTER_DATA_SHARE/FeatureServer/0>
 - [B2d] Corroboration: Eaton Fire survival by WINDOWPANE (No Damage vs Destroyed, 'Unknown' excluded): Multi Pane 74%, Single Pane 59%, No Windows 38% — standard-conforming category: Multi Pane.
-- Regulation text: 10 CCR §2644.9 via Cornell LII <https://www.law.cornell.edu/regulations/california/10-CCR-2644.9>, fetched 2026-08-10.
-- DINS: CAL FIRE POSTFIRE_MASTER_DATA_SHARE FeatureServer, queried live 2026-08-10.
+- Regulation text: 10 CCR §2644.9 via Cornell LII <https://www.law.cornell.edu/regulations/california/10-CCR-2644.9>, fetched 2026-08-14.
+- DINS: CAL FIRE POSTFIRE_MASTER_DATA_SHARE FeatureServer, queried live 2026-08-14.
 
 ---
 

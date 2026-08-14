@@ -1,7 +1,7 @@
 # Wildfire Risk Score Review — Recommendation: Remediate Before Appealing
 
 **Subject property:** 4844 Commonwealth Ave, La Canada Flintridge, CA 91011
-**Date:** 2026-08-10
+**Date:** 2026-08-14
 **Prepared for the policyholder and producer — not for filing.** Complete the actions below first; when filed, the producer's §2644.9(j) 5-day forwarding duty applies.
 
 ## Decision
@@ -190,8 +190,8 @@ No enumerated standard is documented as unmet. We demand the itemized premium-re
 - [parcel] ndvi_current = 0.08546008169651031 — COPERNICUS_S2_SR_HARMONIZED <https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED> (confidence: high) fetched 2026-08-10T23:01:25.422182+00:00 vintage S2 SR 60d window @ 2026-08-10
 - [parcel] ndvi_change_5y = -0.06848154962062836 — COPERNICUS_S2_SR_HARMONIZED <https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED> (confidence: medium) fetched 2026-08-10T23:01:25.422291+00:00
 - [parcel] elevation = 409.1783447265625 meters — USGS_3DEP_COG <https://www.usgs.gov/3d-elevation-program> (confidence: medium) fetched 2026-08-10T23:01:23.577195+00:00 vintage 3DEP 1/3 arc-second seamless DEM
-- Regulation text: 10 CCR §2644.9 via Cornell LII <https://www.law.cornell.edu/regulations/california/10-CCR-2644.9>, fetched 2026-08-10.
-- DINS: CAL FIRE POSTFIRE_MASTER_DATA_SHARE FeatureServer, queried live 2026-08-10.
+- Regulation text: 10 CCR §2644.9 via Cornell LII <https://www.law.cornell.edu/regulations/california/10-CCR-2644.9>, fetched 2026-08-14.
+- DINS: CAL FIRE POSTFIRE_MASTER_DATA_SHARE FeatureServer, queried live 2026-08-14.
 
 ---
 

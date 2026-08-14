@@ -88,6 +88,12 @@ remediate-first; mostly-met → appeal), gaps rank by DINS survival delta, and t
 clocks compute correct, DST-stable calendar deadlines. The packet's Eaton survival percentages were
 also independently recomputed against the live DINS service and match to the exact count.
 
+`npm run e2e` drives a headless browser over every rendered artifact a reader actually sees — the
+one-pager, the case dashboard, an APPEAL packet, the DOCUMENT-FIRST packet, and the producer view —
+and asserts the load-bearing content (decisions, statute citations, the (k)(B) demand, the
+Unknown-exclusion disclosure) is present, plus that the live one-pager resolves. `npm test` covers
+the logic; `npm run e2e` covers what renders.
+
 ## Honesty notes
 
 - Subject hardening evidence comes from the subject's own CAL FIRE inspection record where one exists, and from owner documentation otherwise — never inferred.
