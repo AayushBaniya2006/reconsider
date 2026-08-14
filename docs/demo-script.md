@@ -1,10 +1,16 @@
 # Demo script — 2 minutes (the challenge form asks for a 2-minute video)
 
-Setup before recording: terminal at repo root, large font, `set -a; source .env; set +a` done,
-`out/` in a clean state (keep `data/appeals.json`: 2485 forwarded, others draft), browser tabs
-pre-loaded: `out/index.html` (dashboard), `out/packet-2485-santa-rosa-ave.pdf`.
-Fallback if Mireye hiccups: prepend `MIREYE_OFFLINE=1` — replays archived live pulls, identical output.
-Pre-type each command and recall with ↑ so there are no live typos.
+Setup before recording: run `./scripts/preflight.sh` first — it confirms GO/NO-GO (deps, fixtures,
+clock state, tests, live one-pager). Terminal at repo root, large font; browser tabs pre-loaded:
+`out/index.html` (dashboard), `out/packet-2485-santa-rosa-ave.pdf`. Pre-type each command and
+recall with ↑ so there are no live typos.
+
+**Record in offline mode:** prefix every command with `MIREYE_OFFLINE=1` (or run
+`MIREYE_OFFLINE=1 ./scripts/demo.sh`). This replays the Mireye responses archived from real live
+pulls on Aug 10 — byte-identical output, but immune to any API hiccup mid-take (the API was down
+~46h earlier this month). It is not faking: the fixtures are genuine archived responses. You can
+truthfully say "these are real Mireye pulls." Only drop `MIREYE_OFFLINE=1` if you specifically want
+to show a cold live call and the API is confirmed up.
 
 ## Beat 1 — the hook (0:00–0:15)
 
