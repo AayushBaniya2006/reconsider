@@ -70,7 +70,7 @@ Outputs land in `out/` (`.md`, `.html`, `.pdf` per property, plus `index.html` �
 
 ```
 src/index.ts      pipeline orchestration
-src/mireye.ts     Mireye client — /v1/fetch wildfire_underwrite preset; live / fixture / pending modes
+src/mireye.ts     Mireye client — /v1/fetch (wildfire_underwrite + natural_hazard presets); live / fixture / pending modes
 src/dins.ts       CAL FIRE DINS client — SFR-filtered survival crosstabs, Unknown-excluded, subject lookup
 src/scoring.ts    the 12 enumerated §2644.9(d)(1) standards (verbatim) scored against evidence
 src/decision.ts   appeal / remediate-first / document-first — with ranked gaps or evidence checklist
@@ -78,8 +78,11 @@ src/packet.ts     packet renderer (statutory clock, scorecard, (k)(B) demand tab
 src/render.ts     markdown → print-styled HTML → PDF
 src/registry.ts   appeal registry + statutory clock math (data/appeals.json)
 src/appeals.ts    producer CLI + dashboard
-src/site.ts       static case dashboard (out/index.html) from data/*.json
+src/site.ts       case dashboard → out/index.html (local) + docs/app.html (deployed app view)
 src/*.test.ts     hard rules as executable tests (npm test) — 9 passing
+scripts/e2e.mjs   headless-browser artifact test (npm run e2e) — 11 checks
+scripts/preflight.sh   pre-recording GO/NO-GO check for the demo
+docs/index.html   landing page · docs/signin.html  sign-in (skip, no OAuth) · docs/app.html  app workspace
 ```
 
 ## Tests
