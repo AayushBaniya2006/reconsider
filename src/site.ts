@@ -1,7 +1,7 @@
 // Static case-dashboard generator: data/*.json → out/index.html.
 // Pure and offline — the pipeline (index.ts) writes the data; this renders it.
 //   npm run site
-import { readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { type AppealRecord, type ClockItem, clocksFor, loadAppeals, todayLocal } from './registry.ts';
 
 const read = (p: string) => {
@@ -74,7 +74,7 @@ function factRows(c: any): string {
     .join('');
 }
 
-const caseHtml = cases
+const casesBlock = (pdfBase: string) => cases
   .map((c, i) => {
     const a = appeals.find((x) => x.id === c.id);
     const st = stampFor(c);
@@ -96,7 +96,7 @@ const caseHtml = cases
   <p class="rationale">${esc(c.rationale)}</p>
   <div class="clocks">${clockRows(a) || '<div class="clock"><span class="ck idle">No statutory clocks running — packet not filed, by design.</span></div>'}</div>
   <table class="facts"><thead><tr><th>Fact</th><th>Value</th><th>Source</th><th>Conf.</th></tr></thead><tbody>${factRows(c)}</tbody></table>
-  <a class="packet" href="${esc(c.packet)}">Filing packet (PDF) →</a>
+  <a class="packet" href="${pdfBase}${esc(c.packet)}">Filing packet (PDF) →</a>
 </article>`;
   })
   .join('\n');
@@ -104,7 +104,7 @@ const caseHtml = cases
 const fr = fieldRequests[0];
 const declined = cases.filter((c) => c.decision !== 'appeal').length;
 
-const html = `<!doctype html>
+const page = (pdfBase: string, appBar: string) => `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Reconsider — wildfire score appeals under 10 CCR §2644.9</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +184,13 @@ footer .src{font:400 11px var(--mono);letter-spacing:.02em}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (max-width:760px){.case h2{padding-right:0;min-height:0}.stamp{position:static;transform:rotate(-2deg);align-self:flex-start}}
-</style></head><body><div class="wrap">
+.appbar{position:sticky;top:0;z-index:5;background:#0b0e13;color:#f5f1e8;display:flex;justify-content:space-between;align-items:center;
+  padding:11px 24px;font:500 12px var(--mono);letter-spacing:.04em;border-bottom:2px solid var(--poppy)}
+.appbar .brand{font-weight:700}.appbar .brand .re{color:var(--poppy)}
+.appbar a{color:#f5f1e8;text-decoration:none;opacity:.85}.appbar a:hover{opacity:1;color:var(--poppy)}
+.appbar .who{opacity:.55}
+@media (max-width:600px){.appbar .who{display:none}}
+</style></head><body>${appBar}<div class="wrap">
 <header>
   <div class="masthead">
     <h1><span class="re">Re</span>consider</h1>
@@ -207,7 +213,7 @@ classification, the insurer shall acknowledge receipt of the appeal in writing w
 [and] respond … with a reconsideration and decision within thirty (30) calendar days.”
 <cite>10 CCR §2644.9(i) — fetched from primary source at build time</cite></blockquote>
 
-<section class="cases">${caseHtml}</section>
+<section class="cases">${casesBlock(pdfBase)}</section>
 
 ${fr ? `<section class="flight"><span class="tag">Evidence in flight</span>
 <span>The agent requested fields Mireye doesn't have yet — ${esc(fr.asks.join(' · '))} — via /v1/field-requests
@@ -224,6 +230,20 @@ Packets are supplemented on delivery.</span></section>` : ''}
 </footer>
 </div></body></html>`;
 
-const out = new URL('../out/index.html', import.meta.url).pathname;
-writeFileSync(out, html);
-console.log(out);
+const APPBAR = `<div class="appbar"><span class="brand"><span class="re">Re</span>consider</span><span class="who">demo workspace · signed in as producer@demo</span><a href="index.html">← back to site</a></div>`;
+
+const outDir = new URL('../out/', import.meta.url).pathname;
+const docsDir = new URL('../docs/', import.meta.url).pathname;
+mkdirSync(docsDir + 'assets', { recursive: true });
+
+// Local dashboard for the CLI demo (packet PDFs sit alongside in out/).
+writeFileSync(outDir + 'index.html', page('', ''));
+// Deployed "app" view behind the landing page (PDFs copied into docs/assets/).
+writeFileSync(docsDir + 'app.html', page('assets/', APPBAR));
+for (const c of cases) {
+  try {
+    copyFileSync(outDir + c.packet, docsDir + 'assets/' + c.packet);
+  } catch {}
+}
+console.log(outDir + 'index.html');
+console.log(docsDir + 'app.html');

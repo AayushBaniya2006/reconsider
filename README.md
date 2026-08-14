@@ -4,6 +4,8 @@
 
 **Not a report. A filing.** A report describes risk; a filing under 10 CCR §2644.9(i) starts a clock the insurer must answer in writing.
 
+**Live site:** [aayushbaniya2006.github.io/reconsider](https://aayushbaniya2006.github.io/reconsider/) — landing page → sign in (skip, no OAuth) → the case workspace (`app.html`). The agent itself is the CLI pipeline below; the site is its front door.
+
 ![Reconsider case dashboard — three real properties, three different agent decisions](docs/assets/dashboard.png)
 
 *The case dashboard (`npm run site` → `out/index.html`): three real properties, three different decisions, every statutory clock the law starts.*
@@ -89,10 +91,11 @@ clocks compute correct, DST-stable calendar deadlines. The packet's Eaton surviv
 also independently recomputed against the live DINS service and match to the exact count.
 
 `npm run e2e` drives a headless browser over every rendered artifact a reader actually sees — the
-one-pager, the case dashboard, an APPEAL packet, the DOCUMENT-FIRST packet, and the producer view —
-and asserts the load-bearing content (decisions, statute citations, the (k)(B) demand, the
-Unknown-exclusion disclosure) is present, plus that the live one-pager resolves. `npm test` covers
-the logic; `npm run e2e` covers what renders.
+landing page, the skippable sign-in, the signed-in app workspace, an APPEAL packet, the
+DOCUMENT-FIRST packet, and the producer view — and asserts the load-bearing content (decisions,
+statute citations, the (k)(B) demand, the Unknown-exclusion disclosure, the sign-in skip target) is
+present, plus that the live site resolves. `npm test` covers the logic; `npm run e2e` covers what
+renders. Both green: 9 unit + 11 e2e.
 
 ## Honesty notes
 

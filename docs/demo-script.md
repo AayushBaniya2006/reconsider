@@ -12,6 +12,10 @@ pulls on Aug 10 — byte-identical output, but immune to any API hiccup mid-take
 truthfully say "these are real Mireye pulls." Only drop `MIREYE_OFFLINE=1` if you specifically want
 to show a cold live call and the API is confirmed up.
 
+Optional 8-second cold open (establishes it's a real product): show the live site
+`aayushbaniya2006.github.io/reconsider` → click **Sign in** → **Skip — enter the demo** → the case
+workspace. Then cut to the terminal for the live run. Keep it fast; the CLI is still the proof.
+
 ## Beat 1 — the hook (0:00–0:15)
 
 *"This house survived the Eaton Fire. CAL FIRE's own map calls its parcel Non-Wildland. Its insurer

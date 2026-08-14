@@ -45,15 +45,43 @@ try {
     return page.evaluate(() => document.body.innerText);
   };
 
-  // 1. One-pager (the GitHub Pages source) — the judge's first read
-  check('one-pager: thesis + judging answers + buyer', await load('docs/index.html'), [
+  // 1. Landing page (the GitHub Pages front door) — the judge's first screen
+  check('landing: headline + thesis + how-it-works + judging answers', await load('docs/index.html'), [
+    'Appeal the score',
     'Not a report',
-    'agent, not a website with a map',
-    'What did you combine',
-    'Is it a real problem',
+    'declined to file',
+    'How it works',
     'Who writes the cheque',
-    'personal-lines insurance producer',
-    'github.com/AayushBaniya2006/reconsider',
+    'insurance producer',
+    'Sign in',
+    'View the cases',
+  ]);
+  const heroImg = await page.evaluate(() => {
+    const i = document.querySelector('.hero-shot img');
+    return !!i && i.complete && i.naturalWidth > 0;
+  });
+  check('landing: hero product shot renders', heroImg ? 'ok' : '', ['ok']);
+  const repoHref = await page.evaluate(() =>
+    [...document.querySelectorAll('a')].map((a) => a.getAttribute('href')).find((h) => h && h.includes('github.com/AayushBaniya2006/reconsider')),
+  );
+  check('landing: links to the public repo', repoHref || '', ['github.com/AayushBaniya2006/reconsider']);
+
+  // 1b. Sign-in page — present but skippable (no OAuth for the demo)
+  check('sign-in: present + skip + no-account note', await load('docs/signin.html'), [
+    'Sign in',
+    'Skip sign-in',
+    'No account needed',
+  ]);
+  const skipHref = await page.evaluate(() => document.querySelector('.skip')?.getAttribute('href'));
+  check('sign-in: skip button targets the app', skipHref || '', ['app.html']);
+
+  // 1c. App view (deployed) — the signed-in workspace with all three decisions
+  check('app view: signed-in workspace + three decisions', await load('docs/app.html'), [
+    'producer@demo',
+    'Appeal',
+    'Remediate first',
+    'Document first',
+    '§2644.9(i)',
   ]);
 
   // 2. Case dashboard — three decisions, three stamps
