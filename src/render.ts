@@ -18,11 +18,16 @@ blockquote { border-left: 3px solid #555; margin: 0.8em 0; padding: 0.3em 1em; f
 code { font: 9.5pt Menlo, monospace; background: #f4f4f4; padding: 0 3px; }
 li { margin: 0.25em 0; }
 strong { letter-spacing: 0.01em; }
+@media screen and (max-width: 640px) {
+  body { padding: 0 14px; }
+  table { display: block; overflow-x: auto; white-space: nowrap; font-size: 8.5pt; }
+  a, code, li, p { overflow-wrap: anywhere; word-break: break-word; }
+}
 `;
 
 export function toHtml(markdown: string, title: string): string {
   const body = marked.parse(markdown, { async: false });
-  return `<!doctype html><html><head><meta charset="utf-8"><title>${title}</title><style>${CSS}</style></head><body>${body}</body></html>`;
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${title}</title><style>${CSS}</style></head><body>${body}</body></html>`;
 }
 
 export async function htmlToPdf(html: string, outPath: string): Promise<void> {

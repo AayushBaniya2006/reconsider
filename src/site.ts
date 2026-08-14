@@ -184,6 +184,7 @@ footer .src{font:400 11px var(--mono);letter-spacing:.02em}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (max-width:760px){.case h2{padding-right:0;min-height:0}.stamp{position:static;transform:rotate(-2deg);align-self:flex-start}}
+@media (max-width:600px){table.facts{table-layout:fixed;width:100%}.facts th,.facts td{overflow-wrap:anywhere;word-break:break-word;font-size:10px}.headline{grid-template-columns:1fr 1fr}}
 .appbar{position:sticky;top:0;z-index:5;background:#0b0e13;color:#f5f1e8;display:flex;justify-content:space-between;align-items:center;
   padding:11px 24px;font:500 12px var(--mono);letter-spacing:.04em;border-bottom:2px solid var(--poppy)}
 .appbar .brand{font-weight:700}.appbar .brand .re{color:var(--poppy)}
