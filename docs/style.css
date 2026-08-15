@@ -3,7 +3,7 @@
    to the legal-editorial app (app.html). */
 :root{
   --night:#0a0d13; --night2:#111722; --ember:#f0691f; --poppy:#c65d1c;
-  --paper:#f5f1e8; --paper2:#ece4d4; --ink:#181410; --faint:rgba(24,20,16,.6);
+  --paper:#f6f6f5; --paper2:#ececeb; --ink:#181410; --faint:rgba(24,20,16,.6);
   --hair:rgba(24,20,16,.14); --line-d:rgba(245,241,232,.16);
   --disp:'Archivo',-apple-system,Helvetica,sans-serif; --mono:'IBM Plex Mono',Menlo,monospace;
 }
@@ -138,7 +138,7 @@ footer.site a{color:var(--ember);text-decoration:none}
 .field label{display:block;font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin-bottom:6px}
 .field input{width:100%;padding:12px 14px;border:1px solid var(--hair);border-radius:8px;font:400 15px var(--disp);background:#fff}
 .field input:focus{outline:none;border-color:var(--poppy);box-shadow:0 0 0 3px rgba(198,93,28,.12)}
-.signin-btn{width:100%;padding:13px;border:none;border-radius:8px;background:#c9c1b1;color:#fff;font:600 15px var(--disp);cursor:not-allowed}
+.signin-btn{width:100%;padding:13px;border:none;border-radius:8px;background:#c6c6c4;color:#fff;font:600 15px var(--disp);cursor:not-allowed}
 .divider-or{display:flex;align-items:center;gap:12px;margin:22px 0;color:var(--faint);font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.1em}
 .divider-or::before,.divider-or::after{content:"";flex:1;height:1px;background:var(--hair)}
 .skip{display:block;text-align:center;padding:14px;border-radius:8px;background:var(--ember);color:#fff;text-decoration:none;font:700 15.5px var(--disp)}
